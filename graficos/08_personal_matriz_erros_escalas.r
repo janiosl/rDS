@@ -141,3 +141,4 @@ legend("topleft",
        bty = "n",
        ncol = 2)
 
+par(op) # Resetar parâmetros gráficos
