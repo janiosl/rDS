@@ -95,3 +95,4 @@ axis(1, at = c(16, 24))
 axis(2, at = c(0, 1))
 
 par(op) # Resetar parâmetros gráficos
+
