@@ -13,7 +13,7 @@ a == 2   #Verifica se os valores são iguais
 a != b   #Verifica se os valores são diferentes
 c == a+b #Verifica se c é igual à soma de a+b
 a == c-b #Verifica se a é igual à diferença c-b
-a+b != 5 #Verifica se a soma de a+b é diferente de c
+a+b != 5 #Verifica se a soma de a+b é diferente de 5
 
 
 #Comparação de "menor que" e "menor ou igual"
@@ -28,13 +28,13 @@ b > c
 
 
 #Cláusula OU
-#Retorna TRUE se qualquer uma das expressões for verdadeira
+#Retorna TRUE se QUALQUER uma das expressões for verdadeira
 a < b | a+b == c
 a > b | a+b == c
 a > b | a+b != c
 
 #Cláusula E
-#Retorna TRUE apenas se ambas expressões forem verdadeira
+#Retorna TRUE apenas se AMBAS expressões forem verdadeira
 a > b && a+b != c
 a < b && a+b == c
 a > b && a+b == c
