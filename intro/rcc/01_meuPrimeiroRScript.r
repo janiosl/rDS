@@ -1,4 +1,7 @@
+#==========================
 #Meu primeiro Script R
+#==========================
+
 print("Olá R")
 
 #Criação de variáveis
@@ -15,16 +18,26 @@ divi <- numero1 / numero2
 #Exibição dos resultados
 print(soma)
 print(dife)
-print(multi)
+print(mult)
 print(divi)
 
 #Outras operações
 #Resultados exibidos no console
-#Exponenciação
+#Exponenciação (** ou ^ executam a mesma operação)
+
+#Elevação ao quadrado
 numero1 ** 2
+numero1 ^ 2
+
 numero2 ** 2
+numero2 ^ 2
+
+#Elevação ao cubo
 numero1 ** 3
+numero1 ^ 3
+
 numero2 ** 3
+numero2 ^ 3
 
 #Raiz quadrada
 sqrt(numero1)
@@ -38,4 +51,6 @@ dados <- c(1, 2, 3, 4)
 mean(dados)   #Média
 sd(dados)     #Desvio padrão
 sum(dados)    #Soma dos dados
-
+min(dados)    #Valor mínimo
+max(dados)    #Valor máximo
+length(dados) #Contagem de itens
