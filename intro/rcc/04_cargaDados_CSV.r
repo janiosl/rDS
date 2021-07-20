@@ -13,9 +13,7 @@ arquivo <- "https://github.com/janiosl/python.ds/raw/master/data/petroleo.csv"
 #O endereço acima pode ser substituído pelo nome de um arquivo local
 #Para isso é preciso configurar o diretório de trabalho atual
 
-##======================
 #Leitura do arquivo CSV
-##======================
 dados <- read.csv(arquivo)
 
 
