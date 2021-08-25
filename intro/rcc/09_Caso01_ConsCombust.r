@@ -117,11 +117,18 @@ boxplot(carros$hwy,
 ##==================================
 ##1.2 DETALHAMENTO DO MELHOR CONSUMO
 ##==================================
-#Filtrando apenas registros da marca Honda
+#Filtros por valores e uso de vetores lógicos para filtro
+#Busca do valor gurgel no dataset
 carros$manufacturer=="gurgel"
-c <- carros[0:5,c("manufacturer", "trans")]
+
+#Criação de um subset
+c <- carros[1:5,c("manufacturer", "trans")]
+c
+
+#Aplicação de filtro baseado em vetor lógico
 c[c(FALSE, TRUE, FALSE, TRUE, TRUE),]
 
+#Filtrando apenas registros da marca Honda
 honda <- carros[carros$manufacturer=="honda",]
 
 #Conferindo os dados do subset
