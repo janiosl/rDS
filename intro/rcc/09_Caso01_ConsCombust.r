@@ -172,33 +172,114 @@ boxplot(honda$hwy,
 
 
 #TÓPICOS FUTUROS...
+##==========================
+##==========================
+##Salvar arquivo de análise
+##==========================
+##==========================
+
+##==========================
+#Através da interface gráfica
+##==========================
+#1 Acessar área Environment
+#2 Acionar botão "Save workspace as"
+#3 Definir local e nome do arquivo usando extensão .RData
+
+##==========================
+#Através da linha de comando
+##==========================
+save.image("estudo_carros.RData")
+save.image("estudo_carros_com_MODELO.RData")
+
+#Carregar dados da análise anterior
+load("estudo_carros.RData")
+
 ##===============================================
 ##2 RELAÇÃO ENTRE VARIÁVEIS DO CONJUNTO DE DADOS
 ##===============================================
+library(corrplot)
+#Filtro apenas com colunas numéricas
+mtcarros <- carros[, c("displ", "cyl", "cty", "hwy")]
+mtcarros
+
+#Análise da correlação entre as variáveis
+cor(mtcarros)
 
 
+#Visualização gráfica da correlação
+corrplot(cor(mtcarros), method = "square")
+
+#Verificando a correlação específica de variáveis que chamarem atenção
+cor(carros$hwy, carros$displ)
+
+
+#Gráfico de dispersão
+plot(carros$displ, carros$hwy,
+     pch=8,
+     col = "#1e88e5",
+     main = "Análise de Dispersão: Consumo x Motor",
+     ylab = "Milhas por galão (estrada)",
+     xlab = "Cilindrada do motor"
+     )
 
 
 ##==================================
 ##3 MODELO DE REGRESSÃO LINEAR
 ##==================================
+library(caret)
 
+#Separação do conjunto de dados em treino e teste
+set.seed(31)
+
+#Criação dos índices para divisão dos dados
+trainIndex <- createDataPartition(carros$hwy,
+                                  p=0.8,
+                                  list = FALSE)
+
+DADOS_TRAIN <- carros[trainIndex,] #training data (80% of data)
+DADOS_TEST <- carros[-trainIndex,] #testing data (20% of data)
+
+#Conferência dos subconjuntos
+head(DADOS_TRAIN)
+head(DADOS_TEST)
 
 
 ##==============================================================
 ##3.1 Criação e treinamento do modelo de aprendizado de máquina
 ##==============================================================
-
-
+#Criação do modelo
+regLin <- lm(hwy ~ displ, data = DADOS_TRAIN)
+regLin
 
 
 ##==============================================================
 ##3.2 Aplicação do modelo para visualização da Regressão Linear
 ##==============================================================
+plot(hwy ~ displ, data=carros,
+     col = "#1e88e5",
+     main="Regressão Linear Simples: Consumo x Motor",
+     pch=8)
 
+abline(regLin, col="red")
 
 
 ##==============================================================
-##3.3 Previsão e avaliação do modelo
+##3.3 Predição e avaliação do modelo
 ##==============================================================
+y_pred = predict(regLin, DADOS_TEST)
+y_pred
 
+
+#Predição para um carro com motor 3.0
+X_conhecido = data.frame(displ=c(3, 1.8))
+predict(regLin, X_conhecido)
+
+#Avaliação do modelo (CENAS DOS PRÓXIMOS CAPÍTULOS...)
+summary(regLin)
+
+
+##==============================================================
+##3.4 Exercícios
+##==============================================================
+#Crie um modelo de regressão linear usando a quantidade de cilindros e
+#o consumo de combustível na cidade.
