@@ -1,3 +1,7 @@
+#====================================
+##Análise e visualização báisca
+#====================================
+
 library("tidyverse")
 
 #SALVANDO CONJUNTO DE DADOS CSV
@@ -27,3 +31,168 @@ ggplot(data=mpg)+
 
 ggplot(data=mpg)+
   geom_point(mapping = aes(x=cty, y=displ))
+
+
+##==============================================
+##EXERCÍCIOS
+#Gráfico em branco
+ggplot(data = mpg)
+
+#234 linhas
+carros <- mpg
+summary(carros)
+
+#drv -> tipo de tração
+?mpg
+
+#Dispersão hwy x cyl
+ggplot(data=mpg)+
+  geom_point(mapping = aes(x=cyl, y=hwy))
+
+#Gráfico inútil - class vs drv
+ggplot(data=mpg) + 
+  geom_point(mapping = aes(x=class, y=drv))
+
+##==============================================
+
+
+#====================================
+##Camada visual adicional
+#====================================
+
+#Cores
+ggplot(data=mpg)+
+  geom_point(mapping = aes(x=displ, y=hwy, color=class))
+
+
+#Uso abaixo (tamanho e transparência) não recomendado, tendo em vista que class não é ordenada
+#Warning message:
+#  Using size for a discrete variable is not advised.
+
+
+#Tamanho
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, size = class))
+
+
+#Transparência
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+
+
+#Formato
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+
+
+#Cores sem conexão com valores
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, size = class, alpha=class), color = "blue")
+
+
+#====================================
+##Facetas em visual adicional
+#====================================
+
+#Uma variável
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))+
+  facet_wrap(~ class, nrow = 2)
+
+#Mais de uma variável
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))+
+  facet_grid(drv ~ cyl)
+
+
+
+#====================================
+##Ajuste dos objetos geométricos.
+#====================================
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+
+
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+
+
+
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
+
+ggplot(data = mpg)+
+  geom_smooth(mapping = aes(x = displ, y = hwy, color = drv),
+              show.legend = FALSE)
+
+#Múltiplas visualizações juntas
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))+
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+
+
+#Múltiplas visualizações juntas - evitando erros
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy))+
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth()
+
+#Múltiplas visualizações com conjuntos de dados diferentes
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth(data = filter(mpg, class == "subcompact"),
+              se = FALSE)
+
+#====================================
+##Transformações estatísticas
+#====================================
+?diamonds
+
+summary(diamonds)
+
+#Usando a geometria
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut))
+
+#Criando o mesmo gráfico com a transf. estatística padrão
+ggplot(data = diamonds) + 
+  stat_count(mapping = aes(x = cut))
+
+#Criando o mesmo gráfico com o conjunto de dados anterior e mudando y
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))
+
+
+#Gerando resumo estatístico visual
+ggplot(data = diamonds) +
+  stat_summary(mapping = aes(x = cut, y = depth),
+               fun.ymin = min,
+               fun.ymax = max,
+               fun.y = median)
+
+
+#Criar dados de exemplo
+demo <- tribble(
+  ~a, ~b,
+  "bar_1", 20,
+  "bar_2", 30,
+  "bar_3", 40
+)
+
+summary(demo)
+
+#Criando o mesmo gráfico com a transf. estatística diferente
+ggplot(data = demo) + 
+  geom_bar(mapping = aes(x=a, y=b),
+           stat = "identity")
+
+
