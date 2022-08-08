@@ -9,6 +9,10 @@ library("tidyverse")
 arquivo = ("D:\\git\\python.ds\\data\\mpg.csv")
 write.table(mpg, file=arquivo, row.names=FALSE, quote=FALSE, sep=",")
 
+arquivo = ("D:\\git\\python.ds\\data\\diamonds.csv")
+write.table(diamonds, file=arquivo, row.names=FALSE, quote=FALSE, sep=",")
+
+
 #Análise dos dados. Economia de combustíveis
 #=============================================
 mpg
@@ -194,5 +198,81 @@ summary(demo)
 ggplot(data = demo) + 
   geom_bar(mapping = aes(x=a, y=b),
            stat = "identity")
+
+
+#====================================
+##Ajustes de posição
+#====================================
+#Colorir bordas das barras
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, color = cut))
+
+
+#Colorir preenchimento das barras
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = cut))
+
+#Colorir preenchimento com empilhamento automático*
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity))
+
+#* Mudança da forma de preenchimento depende da variável escolhida com referência
+
+#Evitando overplotting (sobreposição de pontos) em gráfico de dispersão
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy),
+             position = "jitter") #Adiciona ruído aletório e miniza overplotting
+
+#Gráfico normal para comparação
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+#Forma simplificada (sem necessidade do argumento jitter)
+ggplot(data = mpg) + 
+  geom_jitter(mapping = aes(x = displ, y = hwy))
+
+
+
+#====================================
+##Ajustes das coordenadas
+#====================================
+
+#Trocar eixos x e y
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+  geom_boxplot()
+
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+  geom_boxplot() + 
+  coord_flip()
+
+#Proporção em gráficos de mapas
+nz <- map_data("nz")
+
+ggplot(nz, aes(long, lat, group = group)) + 
+  geom_polygon(fill = "white",
+               color = "black")
+
+ggplot(nz, aes(long, lat, group = group)) + 
+  geom_polygon(fill = "white",
+               color = "black") +
+  coord_quickmap()
+
+
+#Coordenada polar
+#Construção do gráfico
+bar <- ggplot(data = diamonds) + 
+  geom_bar(
+    mapping = aes(x = cut, fill = cut),
+    show.legend = FALSE,
+    width = 1
+  ) + 
+  theme(aspect.ratio = 1) + 
+  labs(x = NULL, y = NULL)
+
+#Visualização com coordenadas normais de barras
+bar + coord_flip()
+
+#Visualização com coordenadas polares
+bar + coord_polar()
 
 
