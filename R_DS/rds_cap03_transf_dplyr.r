@@ -5,8 +5,8 @@ library(tidyverse)
 
 #SALVANDO CONJUNTO DE DADOS CSV
 #Ação não relacionada ao estudo. Gravando apenas para uso posterior em Python
-arquivo = ("D:\\git\\python.ds\\data\\flights.csv")
-write.table(flights, file=arquivo, row.names=FALSE, quote=FALSE, sep=",")
+#arquivo = ("D:\\git\\python.ds\\data\\flights.csv")
+#write.table(flights, file=arquivo, row.names=FALSE, quote=FALSE, sep=",")
 
 View(flights)
 
@@ -81,4 +81,114 @@ filter(flights,
 summary(flights)
 
 #* 
+
+
 #* 
+
+##====================
+##Ordenar linhas
+##====================
+#Ascendente
+arrange(flights,
+        year, month, day)
+
+#Descendente
+arrange(flights,
+        desc(arr_delay))
+
+#Ordenação com valores faltantes
+df <- tibble(x = c(5, NA, 2))
+arrange(df, x)
+arrange(df, desc(x))
+
+##====================
+##EXERCÍCIOS
+##====================
+
+#* NA
+#* Voos mais atrasados e voos que sairam mais cedo
+arrange(flights,
+        desc(dep_delay))
+
+arrange(flights,
+        dep_delay)
+
+#* Voos mais rápidos
+arrange(flights,
+        air_time)
+
+
+##====================
+##Selecionar colunas
+##====================
+select(flights,
+       year, month, day)
+
+#Aninhando operações
+arrange(select(flights, air_time),
+        air_time)
+
+#Seleção de intervalo
+select(flights,
+       year:day)
+
+#Seleção por exclusão de colunas
+df <- select(flights,
+             -(year:day))
+
+rename(flights,
+       tail_num = tailnum)
+
+select(flights,
+       time_hour, air_time, #Coloca a selação no início da tabela
+       everything()) #Mantém todas as demais colunas após a seleção
+
+
+vars <- c("year", "month", "day", "dep_delay", "arr_delay")
+select(flights,
+       one_of(vars))
+
+select(flights,
+       contains("delay"))
+
+select(flights,
+       contains("TIME"))
+
+
+##================================
+##Adicionando colunas calculadas
+##================================
+flights_sml <- select(flights,
+                      year:day,
+                      ends_with("delay"),
+                      distance,
+                      air_time)
+
+View(flights_sml)
+
+mutate(flights_sml,
+       gain = arr_delay - dep_delay,
+       speed = distance / air_time * 60)
+
+#Referência a colunas criadas na mesma operação mutate
+flights_sml <- mutate(flights_sml,
+       gain = arr_delay - dep_delay,
+       hours = air_time / 60,
+       gain_per_hour = gain / hours)
+
+#Mantendo apenas colunas criadas na operação
+transmute(flights_sml,
+          gain = arr_delay - dep_delay,
+          hours = air_time / 60,
+          gain_per_hour = gain / hours)
+
+
+transmute(flights,
+          hour = dep_time %/% 100,
+          minute = dep_time %% 100)
+
+#Aninhando operações e usando as colunas internamente
+mutate(select(flights,
+       dep_time),
+       hour_time = dep_time %/% 100,
+       minute = dep_time %% 100)
