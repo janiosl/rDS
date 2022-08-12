@@ -183,6 +183,17 @@ transmute(flights_sml,
           gain_per_hour = gain / hours)
 
 
+##================================
+##Funções e operações úteis
+##================================
+#Operação entre vetores e escalares
+x <- c(1,2,3,4)
+
+x / sum(x)
+x - mean(x)
+x + x**2
+
+#Aritmética modular
 transmute(flights,
           hour = dep_time %/% 100,
           minute = dep_time %% 100)
@@ -192,3 +203,40 @@ mutate(select(flights,
        dep_time),
        hour_time = dep_time %/% 100,
        minute = dep_time %% 100)
+
+#Leading e lagging
+x <- 1:10
+
+lead(x)
+lag(x)
+
+#Acumulação e rolagem
+cumsum(x)
+
+cummean(x)
+
+#Comparações lógicas
+x == 2
+x != 2
+is.na(x)
+x >= 3
+
+#Classificação/rank
+x <- c(2, 2, 3, NA, 0, 1, 10) 
+min_rank(x)
+min_rank(desc(x))
+
+
+row_number(x)
+dense_rank(x)
+
+
+#Agrupamento
+summarize(flights,
+          delay = mean(dep_delay, na.rm = TRUE))
+
+by_da <- group_by(flights,
+                  year, month, day)
+
+summarize(by_da,
+          delay = mean(dep_delay, na.rm = TRUE))
