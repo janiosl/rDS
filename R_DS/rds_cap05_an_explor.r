@@ -96,3 +96,41 @@ flights %>%
   ggplot(mapping = aes(sched_dep_time)) + 
   geom_freqpoly(mapping = aes(color = cancelled),
                 binwidth = 1/4)
+
+##================================
+##Covariância
+##================================
+#Análise simplificada (e ruim) usando contagem
+ggplot(data = diamonds, mapping = aes(x = price)) + 
+  geom_freqpoly(mapping = aes(color = cut),
+                binwidth = 500)
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut))
+
+#Melhoria mudando de contagem simples para densidade
+ggplot(data = diamonds, mapping = aes(x = price, y = ..density..)) + 
+  geom_freqpoly(mapping = aes(color = cut),
+                binwidth = 500)
+
+#Análise mais detalhada com boxplot múltiplos
+ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
+  geom_boxplot()
+
+
+#Reordenação de variável categórica para facilitar a análise
+#Exemplo original não ordenado
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
+  geom_boxplot()
+
+#Exemplo reordenado
+#reorder -> variável, base de ordenação, métrica de ordenação
+ggplot(data = mpg, mapping = aes(x = reorder(class, hwy, FUN = median),
+                                 y = hwy)) +
+  geom_boxplot()
+
+#Girando o gráfico para facilitar visualização de legendas longas
+ggplot(data = mpg, mapping = aes(x = reorder(class, hwy, FUN = median),
+                                 y = hwy)) +
+  geom_boxplot() +
+  coord_flip()
