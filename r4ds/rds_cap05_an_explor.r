@@ -15,7 +15,7 @@ diamonds %>%
 #Distribuição - variável contínua
 ggplot(data = diamonds) +
   geom_histogram(mapping = aes(x = carat),
-                 bandwidth = 0.5)
+                 binwidth = 0.5)
 
 diamonds %>%
   count(cut_width(carat, 0.5))
@@ -134,3 +134,66 @@ ggplot(data = mpg, mapping = aes(x = reorder(class, hwy, FUN = median),
                                  y = hwy)) +
   geom_boxplot() +
   coord_flip()
+
+
+#Duas variáveis categóricas
+ggplot(data = diamonds) + 
+  geom_count(mapping = aes(x = cut, y = color))
+
+
+diamonds %>% 
+  count(color, cut) %>%
+  ggplot(mapping = aes(x = color, y = cut)) +
+  geom_tile(mapping = aes(fill = n))
+
+
+
+ggplot(data = mpg) + 
+  geom_count(mapping = aes(x = class, y = fl))
+
+
+mpg %>%
+  count(class, fl) %>%
+  ggplot(mapping = aes(x = class, y = fl)) + 
+  geom_tile(mapping = aes(fill = n))
+
+
+#Duas variáveis contínuas
+#Relação entre quilates e preço
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price))
+
+#Versão melhor com transparência
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price),
+             alpha = 1 / 100)
+
+
+
+#Outras opções para datasets grandes
+ggplot(data = smaller) + 
+  geom_bin2d(mapping = aes(x = carat, y = price))
+
+
+#install.packages("hexbin")
+library(hexbin)
+
+ggplot(data = smaller) + 
+  geom_hex(mapping = aes(x = carat, y = price))
+
+
+ggplot(data = smaller, mapping = aes(x = carat, y = price)) + 
+  geom_boxplot(mapping = aes(group = cut_width(carat, 0.1)))
+
+
+#Formas de tornar os boxplot proporcionais aos tamanhos dos bins
+ggplot(data = smaller, mapping = aes(x = carat, y = price)) + 
+  geom_boxplot(mapping = aes(group = cut_width(carat, 0.1, varwidith = TRUE)))
+
+
+ggplot(data = smaller, mapping = aes(x = carat, y = price)) + 
+  geom_boxplot(mapping = aes(group = cut_number(carat, 20)))
+
+ggplot(data = faithful) + 
+  geom_point(mapping = aes(x = eruptions, y = waiting))
+
