@@ -36,3 +36,18 @@ read_csv("a,b,c\n1,2,-")
 read_csv("a,b,c\n1,2,.", na = ".")
 read_csv("a,b,c\n1,2,-", na = "-")
 
+##========================
+##Analisando vetor
+##========================
+str(parse_logical(c("TRUE", "FALSE", "NA")))
+str(parse_integer(c("1", "2", "3")))
+str(parse_date(c("2010-01-01", "1979-10-14")))
+
+#Argumentos adicionais
+parse_integer(c("1", "231", ".", "456"), na = ".")
+
+x <- parse_integer(c("123", "231", "abc", "456.77"))
+x
+
+#Análise de problemas no parse
+problems(x)
