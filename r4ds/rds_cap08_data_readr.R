@@ -108,3 +108,10 @@ parse_date("2010-01-10")
 
 #Configuração personalizada
 parse_date("01/02/15", "%m/%d/%y")
+parse_date("01/02/15", "%d/%m/%y")
+parse_date("01/02/15", "%y/%m/%d")
+
+date_names_langs()
+
+parse_date("1 janeiro 2015", "%d %B %Y",
+           locale = locale("pt"))
