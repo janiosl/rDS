@@ -102,6 +102,9 @@ parse_datetime("20101010")
 parse_date("2010-01-10")
 
 #install.packages("hms")
-library(hms)
-hms::parse_time("01:10 am")
-as_hms("01:10 hms")
+#library(hms)
+#hms::parse_time("01:10 am")
+#as_hms("01:10")
+
+#Configuração personalizada
+parse_date("01/02/15", "%m/%d/%y")
