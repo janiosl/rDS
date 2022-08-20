@@ -105,5 +105,3 @@ parse_date("2010-01-10")
 library(hms)
 hms::parse_time("01:10 am")
 as_hms("01:10 hms")
-
-print("Teste")
