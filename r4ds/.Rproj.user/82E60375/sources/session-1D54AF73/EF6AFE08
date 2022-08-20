@@ -1,27 +1,26 @@
 {
-    "id": "CE90AC6B",
-    "path": "~/GitHub/rDS/r4ds/rds_cap08_data_readr.R",
+    "id": "EF6AFE08",
+    "path": "D:/GitHub/rDS/r4ds/rds_cap08_data_readr.R",
     "project_path": "rds_cap08_data_readr.R",
     "type": "r_source",
-    "hash": "1034714428",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1660657017771.0,
+    "created": 1661026946976.0,
     "source_on_save": false,
-    "relative_order": 11,
+    "relative_order": 1,
     "properties": {
-        "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "92,29",
-        "scrollLine": "74"
+        "cursorPosition": "109,0",
+        "scrollLine": "90"
     },
     "folds": "",
-    "lastKnownWriteTime": 1660915641,
+    "lastKnownWriteTime": 1661027716,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1660915641641,
+    "last_content_update": 1661027716907,
     "read_only": false,
     "read_only_alternatives": []
 }

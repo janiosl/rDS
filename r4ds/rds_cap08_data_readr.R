@@ -91,3 +91,19 @@ parse_character(x2, locale = locale(encoding = "Shift-JIS"))
 #Descobrir codificação quando você desconhece
 guess_encoding(charToRaw(x1))
 guess_encoding(charToRaw(x2))
+
+##Parse de data e tempo
+##==============================
+parse_datetime("2010-10-01T2010")
+
+parse_datetime("20101010")
+
+
+parse_date("2010-01-10")
+
+#install.packages("hms")
+library(hms)
+hms::parse_time("01:10 am")
+as_hms("01:10 hms")
+
+print("Teste")
