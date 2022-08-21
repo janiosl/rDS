@@ -76,6 +76,13 @@ spread(table2,
 
 
 ##Exercícios
+#2 - O código falha porque 1999 e 2000 estão digitados como inteiros
+table4a %>%
+  gather(1999, 2000, key = "year", value = "cases")
+
+
+
+#4 - Identificar e executar o ajuste necessário na tabela
 preg <- tribble(
   ~pregnant, ~male, ~female,
   #----/----/---
