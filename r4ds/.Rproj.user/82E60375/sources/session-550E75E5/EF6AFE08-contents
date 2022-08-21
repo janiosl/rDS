@@ -115,3 +115,18 @@ date_names_langs()
 
 parse_date("1 janeiro 2015", "%d %B %Y",
            locale = locale("pt"))
+
+#Exemplo de parse com problemas
+challenge <- read_csv(readr_example("challenge.csv"))
+problems(challenge)
+
+##Não ocorreu problemas na interpretação
+##das colunas (provavelmente devido alguma atualização do pacote)
+tail(challenge)
+
+#Se ocorresse o problema poderia ser corrigido especificando as colunas
+challenge <- read_csv(readr_example("challenge.csv"),
+                      col_types = cols(
+                        x = col_double(),
+                        y = col_date()
+                      ))
