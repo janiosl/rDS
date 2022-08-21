@@ -130,3 +130,21 @@ challenge <- read_csv(readr_example("challenge.csv"),
                         x = col_double(),
                         y = col_date()
                       ))
+
+#Ampliar a análise padrão para readr "advinhar" as colunas
+challenge2 <- read_csv(readr_example("challenge.csv"),
+                       guess_max = 1001) #n linhas para análise de conteúdo
+
+
+#Armazenar resultados de maneira simples (sem preservar tipos de dados)
+write_csv(challenge,
+          "data/challenge.csv")
+
+read_csv("data/challenge.csv")
+tail(read_csv("data/challenge.csv"))
+
+#Armazenar resultados de maneira aprimorada (preserva tipos de dados)
+write_rds(challenge,
+          "data/challenge.rds")
+
+read_rds("data/challenge.rds")

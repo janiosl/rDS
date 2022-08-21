@@ -3,7 +3,7 @@
     "path": "D:/GitHub/rDS/r4ds/rds_cap08_data_readr.R",
     "project_path": "rds_cap08_data_readr.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "782604168",
     "contents": "",
     "dirty": false,
     "created": 1661026946976.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "131,0",
-        "scrollLine": "113"
+        "cursorPosition": "150,0",
+        "scrollLine": "131"
     },
     "folds": "",
-    "lastKnownWriteTime": 1661082096,
+    "lastKnownWriteTime": 1661092884,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1661082096633,
+    "last_content_update": 1661092884439,
     "read_only": false,
     "read_only_alternatives": []
 }
