@@ -98,6 +98,10 @@ preg %>% gather(male, female,
                 key = "gender",
                 value = "count")
 
+##===================================
+##Separar dados
+##===================================
+#Tabela contém mais de um dado na mesma coluna
 table3 <- tribble(
   ~country, ~year, ~rate,
   #----/----/----
@@ -112,3 +116,117 @@ table3 <- tribble(
   )
 
 table3
+
+table3 %>%
+  separate(rate, into = c("cases", "population"))
+
+#Declaração específica do caractere separador
+table3 %>%
+  separate(rate, into = c("cases", "population"), sep = "/")
+
+#Conversão das novas colunas em tipos de dados adequados
+table3 %>%
+  separate(rate,
+           into = c("cases", "population"),
+           sep = "/",
+           convert = TRUE)
+
+
+#Separete para separar por posição
+table3 %>% 
+  separate(year,
+           into = c("century", "year"),
+           sep = 2) #Inteiro lido como posição ao invés de caractere separador
+
+
+##===================================
+##Unir dados
+##===================================
+#Se houver dados separados em colunas, pode ser feita a união
+table5 <- tidyr::table5
+
+table5 %>%
+  unite(new, century, year)
+
+#Alterar separador padrão (sem esta mudança será colocado _ entre os valores unidos)
+table5 %>%
+  unite(new, century, year,
+        sep = "")
+
+
+##EXERCÍCIOS
+#1
+#Desta forma o valor g na linha 2 será descartado (drop)
+tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% #Valor extra na segunda linha
+  separate(x, c("one", "two", "three"))
+
+
+#Mescla o conteúdo na última coluna válida
+tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>%
+  separate(x, c("one", "two", "three"),
+           extra = "merge")
+           
+#Padrão preeenche à direita com NA
+tibble(x = c("a,b,c", "d,e", "h,i,j")) %>% #Valor ausente na segunda linha
+  separate(x, c("one", "two", "three"))
+
+#Define explicitamente o local de preenchimento com NA
+tibble(x = c("a,b,c", "d,e", "h,i,j")) %>% #Valor ausente na segunda linha
+  separate(x, c("one", "two", "three"),
+           fill = "left")
+
+
+#2
+#Usaria o remove = FALSE se as colunas originais forem importantes para análise
+table5 %>%
+  unite(new, century, year,
+        sep = "",
+        remove = FALSE)
+
+
+
+
+
+##===================================
+##valores ausentes
+##===================================
+stocks <- tibble(
+  year = c(2015,2015,2015,2015,2016,2016,2016),
+  qtr = c(1,2,3,4,2,3,4), #Ausência implícita valor 1 em 2016
+  return = c(1.88, 0.59, 0.35, NA, 0.92, 0.17, 2.66) #Ausência explícita com NA
+)
+
+stocks
+
+#Avaliar melhor a ausência implícita no qtr 1 de 2016
+stocks %>%
+  spread(year, return)
+
+#Se os valores ausentes não forem relevantes, pode-se remover da análise
+stocks %>%
+  spread(year, return) %>% #Espalha para evidenciar ausentes
+  gather(year, return,
+         '2015':'2016',
+         na.rm = TRUE) #Configura remoção ao reunir novamente
+
+
+#Outra forma de evidenciar ausências implícitas
+stocks %>%
+  complete(year, qtr)
+
+
+#Usar valores anteriores para completar ausentes
+treatment <- tibble(
+  person = c("Derrick Whitmore", NA, NA, "Katherine Burke"),
+  treatment = c(1,2,3,1),
+  response = c(7,10,9,4)) %>%
+  mutate(
+    across(treatment, as.integer),
+    across(response, as.integer)
+  )
+  
+
+treatment
+
+treatment %>%
+  fill(person)
