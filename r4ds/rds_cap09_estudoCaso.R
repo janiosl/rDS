@@ -46,3 +46,14 @@ who5 <- who4 %>%
   select(-new, -iso2, -iso3) #Eliminar colunas com - em select
 
 who5
+
+
+##Alternativa simplificada (completa) de tratamento dos dados
+who %>%
+  gather(code, value, new_sp_m014:newrel_f65, na.rm = TRUE) %>%
+  mutate(
+    code = stringr::str_replace(code, "newrel", "new_rel")
+  ) %>%
+  separate(code, c("new", "var", "sexage")) %>%
+  select(-new, -iso2, -iso3) %>%
+  separate(sexage, c("sex", "age"), sep = 1)

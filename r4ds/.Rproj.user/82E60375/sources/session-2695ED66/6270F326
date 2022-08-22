@@ -3,9 +3,9 @@
     "path": "D:/GitHub/rDS/r4ds/rds_cap09_estudoCaso.R",
     "project_path": "rds_cap09_estudoCaso.R",
     "type": "r_source",
-    "hash": "482871404",
+    "hash": "0",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1661204853109.0,
     "source_on_save": false,
     "relative_order": 2,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "48,0",
-        "scrollLine": "29"
+        "cursorPosition": "60,0",
+        "scrollLine": "41"
     },
     "folds": "",
-    "lastKnownWriteTime": 1661206439,
+    "lastKnownWriteTime": 1661206957,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1661206439260,
+    "last_content_update": 1661207028462,
     "read_only": false,
     "read_only_alternatives": []
 }
