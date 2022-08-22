@@ -3,7 +3,7 @@
     "path": "D:/GitHub/rDS/r4ds/rds_cap09_estrutura_tidyr.R",
     "project_path": "rds_cap09_estrutura_tidyr.R",
     "type": "r_source",
-    "hash": "1252406815",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1661092900552.0,
@@ -17,11 +17,11 @@
         "scrollLine": "95"
     },
     "folds": "",
-    "lastKnownWriteTime": 1661181722,
+    "lastKnownWriteTime": 1661204566,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1661181722,
+    "last_content_update": 1661204566,
     "read_only": false,
     "read_only_alternatives": []
 }
