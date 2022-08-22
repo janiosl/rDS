@@ -1,0 +1,48 @@
+library(tidyverse)
+
+#Dataset
+who
+
+View(who)
+
+
+who1 <- who %>%
+  gather(
+    new_sp_m014:newrel_f65,
+    key = "key",
+    value = "cases",
+    na.rm = TRUE
+  )
+
+who1
+
+who1 %>%
+  count(key)
+
+#Corrigir newrel para new_rel em key - facilitará a separação
+who2 <- who1 %>%
+  mutate(key = stringr::str_replace(key, "newrel", "new_rel"))
+
+who2
+
+#Primeira separação das colunas
+who3 <- who2 %>%
+  separate(key, #Coluna com valores juntos
+           c("new", "type", "sexage"), #Valores separados
+           sep = "_") #Separador
+
+who3
+
+#Separar sexo e idade
+who4 <- who3 %>%
+  separate(sexage,
+           c("sex", "age"),
+           sep = 1)
+
+who4
+
+#Eliminar colunas desnecessárias
+who5 <- who4 %>%
+  select(-new, -iso2, -iso3) #Eliminar colunas com - em select
+
+who5
