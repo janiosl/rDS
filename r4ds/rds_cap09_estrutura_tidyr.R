@@ -97,3 +97,18 @@ preg
 preg %>% gather(male, female,
                 key = "gender",
                 value = "count")
+
+table3 <- tribble(
+  ~country, ~year, ~rate,
+  #----/----/----
+  "Afeganistão",  1999, "745/19987071",
+  "Afeganistão",  2000, "2666/20595360",
+  "Brasil",       1999,  "37737/172006362",
+  "Brasil",       2000,  "80488/174504898",
+  "China",        1999, "212258/1272915272",
+  "China",        2000, "213766/1280428583") %>%
+  mutate(
+    across(year, as.integer)
+  )
+
+table3
