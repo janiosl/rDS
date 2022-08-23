@@ -83,7 +83,9 @@ who5 %>%
   ggplot() + 
   geom_bar(mapping = aes(x = country, y = cases),
            stat = "identity") + 
-  coord_flip()
+  coord_flip() +
+  ggtitle("Análise por país com") +
+  xlab("Países") + ylab("Casos")
 
 
 #Análise por país com mais de 1000 casos
@@ -94,7 +96,9 @@ who5 %>%
   ggplot() + 
   geom_bar(mapping = aes(x = country, y = cases),
            stat = "identity") + 
-  coord_flip()
+  coord_flip() +
+  ggtitle("Análise por país com mais de 1000 casos") +
+  xlab("Países") + ylab("Casos")
 
 #Análise por tipo de caso do país com mais casos
 who5 %>%
@@ -103,7 +107,9 @@ who5 %>%
   summarize(cases = mean(cases)) %>%
   ggplot() + 
   geom_bar(mapping = aes(x = type, y = cases),
-           stat = "identity")
+           stat = "identity") +
+  ggtitle("Análise por tipo de caso do país com mais casos: Índia") +
+  xlab("Tipos") + ylab("Casos")
 
 
 #Análise por tipo de caso dos 3 paises com mais casos
@@ -113,7 +119,10 @@ who5 %>%
   summarize(cases = mean(cases)) %>%
   ggplot() + 
   geom_bar(mapping = aes(x = type, y = cases),
-           stat = "identity")
+           stat = "identity") +
+  ggtitle("Análise por tipo de caso dos 3 paises com mais casos") +
+  xlab("Tipos") + ylab("Casos")
+
 
 
 #Análise da evolução ao longo do tempo na Índia
@@ -124,4 +133,6 @@ who5 %>%
   summarize(cases = sum(cases)) %>%
   ggplot(mapping = aes(x = year, y = cases)) + 
   geom_point(position = "jitter") +
-  geom_smooth()
+  geom_smooth() +
+  ggtitle("Análise da evolução ao longo do tempo na Índia") +
+  xlab("Anos") + ylab("Casos")
