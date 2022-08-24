@@ -184,3 +184,29 @@ br <- who5 %>%
             cases_mean = mean(cases))
 
 br
+
+#Análise por tipo - soma
+ggplot(data = br) + 
+  geom_bar(mapping = aes(x = type, y = cases_sum),
+           stat = "identity") +
+  ggtitle("Casos por tipo: Brasil") + 
+  xlab("Tipos") + ylab("Soma de Casos")
+
+#Análise por tipo - média
+ggplot(data = br) + 
+  geom_bar(mapping = aes(x = type, y = cases_mean),
+           stat = "identity") +
+  ggtitle("Casos por tipo: Brasil") + 
+  xlab("Tipos") + ylab("Média de Casos")
+
+#Evolução anual casos por tipo
+ggplot(data = br,
+       mapping = aes(x = year, y = cases_mean)) + 
+  geom_point(position = "jitter", mapping = aes(color = type)) +
+  geom_smooth()
+
+br %>%
+  filter(type == "sp") %>%
+  ggplot(mapping = aes(x = year, y = cases_mean)) + 
+  geom_point() +
+  geom_smooth()
