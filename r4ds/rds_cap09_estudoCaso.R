@@ -108,7 +108,7 @@ who5 %>%
   ggplot() + 
   geom_bar(mapping = aes(x = type, y = cases),
            stat = "identity") +
-  ggtitle("Análise por tipo de caso do país com mais casos: Índia") +
+  ggtitle("Análise por tipo de caso do país com mais casos: Média anual - Índia") +
   xlab("Tipos") + ylab("Casos")
 
 
@@ -120,12 +120,12 @@ who5 %>%
   ggplot() + 
   geom_bar(mapping = aes(x = type, y = cases),
            stat = "identity") +
-  ggtitle("Análise por tipo de caso dos 3 paises com mais casos") +
+  ggtitle("Análise por tipo de caso dos 3 paises com mais casos: Média anual") +
   xlab("Tipos") + ylab("Casos")
 
 
 
-#Análise da evolução ao longo do tempo na Índia
+#Análise da evolução ao longo do tempo na Índia e China
 who5 %>%
   filter(country == "India") %>%
   select(country, year, cases) %>%
@@ -136,3 +136,77 @@ who5 %>%
   geom_smooth() +
   ggtitle("Análise da evolução ao longo do tempo na Índia") +
   xlab("Anos") + ylab("Casos")
+
+
+
+#Análise da evolução ao longo do tempo na Índia
+who5 %>%
+  filter(country == "China") %>%
+  select(country, year, cases) %>%
+  group_by(year) %>%
+  summarize(cases = sum(cases)) %>%
+  ggplot(mapping = aes(x = year, y = cases)) + 
+  geom_point(position = "jitter") +
+  geom_smooth() +
+  ggtitle("Análise da evolução ao longo do tempo na China") +
+  xlab("Anos") + ylab("Casos")
+
+
+#Detalhametno do análise dos 3 países com mais casos
+who_top3 <- who5 %>%
+  filter(country == "India" | country == "China" | country == "South Africa")
+
+
+who_top3 %>%
+  group_by(country, type, year) %>%
+  summarize(cases = sum(cases)) %>%
+  ggplot() +
+  geom_bar(mapping = aes(x = country, y = cases),
+           stat = "identity") +
+  ggtitle("Análise por tipo de caso dos 3 paises com mais casos: Soma")
+
+
+who_top3 %>%
+  group_by(country, type, year) %>%
+  summarize(cases = sum(cases)) %>%
+  ggplot() +
+  geom_bar(mapping = aes(x = country, y = cases, fill = type),
+           stat = "identity") +
+  ggtitle("Análise por tipo de caso dos 3 paises com mais casos: Soma")
+
+
+
+#Análise do Brasil
+br <- who5 %>%
+  filter(country == "Brazil") %>%
+  group_by(type, year) %>%
+  summarize(cases_sum = sum(cases),
+            cases_mean = mean(cases))
+
+br
+
+#Análise por tipo - soma
+ggplot(data = br) + 
+  geom_bar(mapping = aes(x = type, y = cases_sum),
+           stat = "identity") +
+  ggtitle("Casos por tipo: Brasil") + 
+  xlab("Tipos") + ylab("Soma de Casos")
+
+#Análise por tipo - média
+ggplot(data = br) + 
+  geom_bar(mapping = aes(x = type, y = cases_mean),
+           stat = "identity") +
+  ggtitle("Casos por tipo: Brasil") + 
+  xlab("Tipos") + ylab("Média de Casos")
+
+#Evolução anual casos por tipo
+ggplot(data = br,
+       mapping = aes(x = year, y = cases_mean)) + 
+  geom_point(position = "jitter", mapping = aes(color = type)) +
+  geom_smooth()
+
+br %>%
+  filter(type == "sp") %>%
+  ggplot(mapping = aes(x = year, y = cases_mean)) + 
+  geom_point() +
+  geom_smooth()
