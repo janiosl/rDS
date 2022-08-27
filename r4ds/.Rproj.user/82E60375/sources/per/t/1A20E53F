@@ -3,7 +3,7 @@
     "path": "D:/GitHub/rDS/r4ds/rds_cap10_dados_rel.R",
     "project_path": "rds_cap10_dados_rel.R",
     "type": "r_source",
-    "hash": "2641563340",
+    "hash": "4286356366",
     "contents": "",
     "dirty": false,
     "created": 1661364130281.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "132,0",
-        "scrollLine": "115"
+        "cursorPosition": "159,0",
+        "scrollLine": "142"
     },
     "folds": "",
-    "lastKnownWriteTime": 1661554619,
+    "lastKnownWriteTime": 1661615540,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1661554619638,
+    "last_content_update": 1661615540413,
     "read_only": false,
     "read_only_alternatives": []
 }

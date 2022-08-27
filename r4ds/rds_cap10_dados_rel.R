@@ -130,3 +130,30 @@ y
 
 x %>% 
   left_join(y, by = "key")
+
+##====================================
+#Definição de colunas com chave
+##====================================
+#Sem chave (by = NULL) -> Natural join
+#Todas combinações possíveis são feitas
+flights2
+weather
+
+flights2 %>%
+  left_join(weather)
+
+#Chave explícita
+#Despreza outras combinações diferentes do valor de by
+#Colunas com mesmo nome, mas não usadas no join são desambiguadas com .x e .y
+#Verificar a desambiguação de year
+flights2 %>%
+  left_join(planes, by = "tailnum")
+
+
+#Chave explícita com nomes diferentes
+flights2 %>%
+  left_join(airports, by = c("dest" = "faa"))
+
+
+flights2 %>%
+  left_join(airports, by = c("origin" = "faa"))
