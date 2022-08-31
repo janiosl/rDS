@@ -25,9 +25,10 @@ flights %>%
 flights %>% 
   count(year, month, day, tailnum) %>%
   filter(n > 1)
-
+##====================================
 ##====================================
 ##Mutate join
+##====================================
 ##====================================
 #Subset para facilitar a compreensão do exemplo
 flights2 <- flights %>%
@@ -157,3 +158,62 @@ flights2 %>%
 
 flights2 %>%
   left_join(airports, by = c("origin" = "faa"))
+
+##====================================
+##====================================
+##Filtering join
+##====================================
+##====================================
+
+#Identificação de destinos mais populares
+top_dest <- flights %>%
+  count(dest, sort = TRUE) %>%
+  head(10)
+
+top_dest
+
+
+#Voos que foram para destinos populares
+#Usando filtros
+flights %>%
+  filter(dest %in% top_dest$dest)
+
+
+#Usando semi join
+#Combina mantendo apenas as linhas com em x que tem cominação em y
+flights %>%
+  semi_join(top_dest)
+
+
+#Anti join inverte a ordem, procurando linhas não tem uma combinação
+flights %>%
+  anti_join(planes, by = "tailnum") %>%
+  count(tailnum, sort = TRUE)
+
+
+##====================================
+##====================================
+##Operações de conjuntos
+##====================================
+##====================================
+
+df1 <- tribble(
+  ~x, ~y,
+  #---/---
+  1, 1,
+  2, 1
+)
+
+df2 <- tribble(
+  ~x, ~y,
+  #---/---
+  1, 1,
+  1, 2
+)
+df1
+df2
+
+intersect(df1, df2)
+union(df1, df2)
+setdiff(df1, df2)
+setdiff(df2, df1)
