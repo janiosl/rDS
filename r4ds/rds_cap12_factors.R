@@ -6,7 +6,6 @@ library(forcats)
 #Caracteres simples (sem fatores)
 x1 <- c("Dec", "Apr", "Jan", "Mar")
 x2 <- c("Dec", "Apr", "Jam", "Mar")
-
 sort(x1)
 
 #Uso de fatores
@@ -19,7 +18,6 @@ month_levels <- c(
 #Criar um fator
 y1 <- factor(x1, levels = month_levels)
 y1
-
 sort(y1)
 
 #Criar um fator com algum valor inválid
@@ -36,7 +34,6 @@ x3 <- c("AAA", "AA", "A",
         "A", "BB", "AAA", "B")
 
 y3 <- factor(x3, levels = unique(x3))
-
 y3
-
 sort(y3)
+
