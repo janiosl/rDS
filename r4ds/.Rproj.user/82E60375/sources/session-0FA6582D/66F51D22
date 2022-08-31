@@ -1,27 +1,27 @@
 {
-    "id": "1A20E53F",
-    "path": "D:/GitHub/rDS/r4ds/rds_cap10_dados_rel.R",
-    "project_path": "rds_cap10_dados_rel.R",
+    "id": "66F51D22",
+    "path": "D:/GitHub/rDS/r4ds/rds_cap12_factors.R",
+    "project_path": "rds_cap12_factors.R",
     "type": "r_source",
-    "hash": "4286356366",
+    "hash": "2331400690",
     "contents": "",
     "dirty": false,
-    "created": 1661364130281.0,
+    "created": 1661971306551.0,
     "source_on_save": false,
-    "relative_order": 2,
+    "relative_order": 1,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "159,0",
-        "scrollLine": "142"
+        "cursorPosition": "42,0",
+        "scrollLine": "25"
     },
     "folds": "",
-    "lastKnownWriteTime": 1661615540,
+    "lastKnownWriteTime": 1661973292,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1661615540413,
+    "last_content_update": 1661973292118,
     "read_only": false,
     "read_only_alternatives": []
 }
