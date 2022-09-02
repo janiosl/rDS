@@ -1,27 +1,27 @@
 {
-    "id": "CE94B68A",
-    "path": "D:/GitHub/rDS/r4ds/cap12_estudoCaso.R",
-    "project_path": "cap12_estudoCaso.R",
+    "id": "B7B91E96",
+    "path": "D:/GitHub/rDS/r4ds/rds_cap09_estudoCaso.R",
+    "project_path": "rds_cap09_estudoCaso.R",
     "type": "r_source",
-    "hash": "3574964730",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1661973627397.0,
+    "created": 1662157106560.0,
     "source_on_save": false,
-    "relative_order": 2,
+    "relative_order": 1,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "13,0",
-        "scrollLine": "0"
+        "cursorPosition": "86,2",
+        "scrollLine": "75"
     },
     "folds": "",
-    "lastKnownWriteTime": 1661973792,
+    "lastKnownWriteTime": 1661361985,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1661973792524,
+    "last_content_update": 1661361985,
     "read_only": false,
     "read_only_alternatives": []
 }
