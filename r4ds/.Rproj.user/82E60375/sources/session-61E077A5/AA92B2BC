@@ -1,27 +1,27 @@
 {
-    "id": "B7B91E96",
-    "path": "D:/GitHub/rDS/r4ds/rds_cap09_estudoCaso.R",
-    "project_path": "rds_cap09_estudoCaso.R",
+    "id": "AA92B2BC",
+    "path": "D:/GitHub/rDS/r4ds/rds_cap12_factor_ajustes.R",
+    "project_path": "rds_cap12_factor_ajustes.R",
     "type": "r_source",
-    "hash": "4039495454",
+    "hash": "3861208937",
     "contents": "",
     "dirty": false,
-    "created": 1662157106560.0,
+    "created": 1662179644656.0,
     "source_on_save": false,
-    "relative_order": 1,
+    "relative_order": 4,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "86,2",
-        "scrollLine": "0"
+        "cursorPosition": "135,0",
+        "scrollLine": "117"
     },
     "folds": "",
-    "lastKnownWriteTime": 1661361985,
+    "lastKnownWriteTime": 1662235896,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1661361985,
+    "last_content_update": 1662235896323,
     "read_only": false,
     "read_only_alternatives": []
 }
