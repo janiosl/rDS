@@ -64,16 +64,24 @@ mar_tv <- gss_cat %>%
   select(marital, tvhours) %>% 
   filter(marital != "No answer") %>% 
   group_by(marital) %>% 
-  summarize(tvhour = mean(tvhours, na.rm = TRUE))
+  summarize(tvhour = mean(tvhours, na.rm = TRUE),
+            n = n())
 
 mar_tv
 
 ggplot(mar_tv) +
-  geom_bar(aes(marital, tvhour),
+  geom_bar(aes(fct_reorder(marital, tvhour), tvhour),
            stat = "identity")
+
+ggplot(mar_tv, aes(marital, tvhour)) + 
+  geom_point()
+
+ggplot(mar_tv, aes(fct_reorder(marital, tvhour), tvhour)) + 
+  geom_point()
 
 #Race x relig
 gss_cat %>% 
   select(race, relig) %>% 
   group_by(race, relig) %>% 
   summarize(n = n())
+
