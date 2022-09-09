@@ -66,3 +66,31 @@ flights_dt <- flights %>%
   select(origin, dest, ends_with("delay"), ends_with("time"))
 
 flights_dt
+
+
+#Visualização dos dados de datas e horas
+#Visão geral
+flights_dt %>% 
+  ggplot(aes(dep_time)) +
+  geom_freqpoly(binwidth = 86400)
+
+
+#Visão de um dia
+flights_dt %>% 
+  filter(dep_time < ymd(20130102)) %>% 
+  ggplot(aes(dep_time)) + 
+  geom_freqpoly(binwidth = 600)
+
+
+#Mudar de um tipo para outro
+today()
+as_datetime(today())
+
+now()
+as_date(now())
+
+as_datetime(60*60*10)
+as_date(365*10+2)
+
+#Dados inválidos
+ymd(c("2010-10-10", "bananas"))
