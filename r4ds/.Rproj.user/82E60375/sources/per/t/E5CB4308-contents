@@ -2,6 +2,10 @@ library(tidyverse)
 library(lubridate)
 library(nycflights13)
 
+##==================================
+##Componentes de tempo
+##==================================
+
 #Obtenção de componentes internos
 datetime <- ymd_hms(now())
 datetime
@@ -104,3 +108,104 @@ flights_dt %>%
   mutate(dep_hour = update(dep_time, yday = 1)) %>% 
   ggplot(aes(dep_hour)) +
   geom_freqpoly(binwidth = 300)
+
+##==================================
+##Intervalos de tempo
+##==================================
+#Durações
+#Padrão R -> difftime
+#Adaptado dependendo dos objetos comparados
+h_age <- today() - ymd(19810131)
+h_age
+
+#Usando lubridate
+#Sempre calculado em segundos
+as.duration(h_age)
+
+#Construtores de durações
+dseconds(15)
+dminutes(10)
+dhours(c(12,14))
+ddays(0:5)
+dweeks(3)
+dyears(1)
+
+#Operações com durações
+2 * dyears(1)
+dyears(1) + dweeks(12) + dhours(15)
+
+tomorrow <- today() + ddays(1)
+tomorrow
+
+lastyear <- today() - dyears(1)
+lastyear
+
+
+#Cuidado ao usar
+#Erros de cálculos com dias desiguais, fuso horário, horário de verão
+one_pm <- ymd_hms("2016-03-12 13:00:00",
+                  tz = "America/New_York")
+one_pm
+
+one_pm + ddays(1)
+
+#Períodos
+#Calculados em tempos "humanos"
+one_pm + days(1)
+
+#Construtores de períodos
+seconds(15)
+minutes(10)
+hours(c(12,24))
+days(7)
+months(1:6)
+weeks(3)
+years(1)
+
+
+#Operações com períodos
+10 * (months(6) + days(1))
+days(50) + hours(25) + minutes(2)
+
+#Diferença de 1 ano
+ymd("2016-01-01") + dyears(1) #Durações
+ymd("2016-01-01") + years(1) #Períodos
+
+
+#Aplicando ao dataset de voos
+#Problemas de inconsistência -> Voos parecem chegar antes de partir
+flights_dt %>% 
+  filter(arr_time < dep_time)
+
+flights_dt %>% 
+  filter(arr_time < dep_time)
+
+#Voos chegam no dia seguinte, mas foi usado o mesmo dia da partida
+#Correção adicionando 1 dia
+flights_dt <- flights_dt %>% 
+  mutate(
+    overnight = arr_time < dep_time,
+    arr_time = arr_time + days(overnight * 1),
+    sched_arr_time = sched_arr_time + days(overnight * 1)
+  )
+
+flights_dt
+View(flights_dt)
+
+flights_dt %>% 
+  filter(overnight, arr_time < dep_time)
+
+
+#Intervalos
+#ste tipo de operação pode dar problema dependendo da quantidade de dias no ano
+dyears(1) / ddays(365)
+years(1) / days(1)
+
+#Para calcular intervalos deve ser colocada uma data de início
+#Nos exemplos abaixo foi usado today() como início
+next_year <- today() + years(1)
+next_year
+
+(today() %--% next_year) / ddays(1)
+(today() %--% next_year) / days(1)
+(today() %--% next_year) %/% days(1)
