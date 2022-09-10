@@ -92,5 +92,35 @@ as_date(now())
 as_datetime(60*60*10)
 as_date(365*10+2)
 
+##Exercícios
 #Dados inválidos
 ymd(c("2010-10-10", "bananas"))
+
+#Time zones
+today(tzone="UTC")
+today("GMT")
+now("GMT")
+now()
+now("America/New_York")
+
+Sys.timezone()
+now("America/Sao_Paulo")
+now(tzone="America/Sao_Paulo")
+
+OlsonNames()
+
+#Lendo diferentes datas
+d1 <- "January 1, 2010"
+mdy(d1)
+
+d2 <- "2015-Mar-07"
+ymd(d2)
+
+d3 <- "06-Jun-2017"
+dmy(d3)
+
+d4 <- c("August 19 (2015)", "July 1 (2015)")
+mdy(d4)
+
+d5 <- "12/30/14"
+mdy(d5)
