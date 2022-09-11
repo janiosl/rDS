@@ -1,27 +1,27 @@
 {
-    "id": "15F40F2E",
-    "path": "D:/GitHub/rDS/r4ds/rds_cap13_datas_lubridate.R",
-    "project_path": "rds_cap13_datas_lubridate.R",
+    "id": "3973D177",
+    "path": "D:/GitHub/rDS/r4ds/rds_cap14_pipes.R",
+    "project_path": "rds_cap14_pipes.R",
     "type": "r_source",
-    "hash": "1304828291",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1662303670193.0,
+    "created": 1662928706994.0,
     "source_on_save": false,
-    "relative_order": 1,
+    "relative_order": 3,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "126,0",
-        "scrollLine": "108"
+        "cursorPosition": "67,6",
+        "scrollLine": "50"
     },
     "folds": "",
-    "lastKnownWriteTime": 1662812957,
+    "lastKnownWriteTime": 1662931976,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1662812957961,
+    "last_content_update": 1662931976600,
     "read_only": false,
     "read_only_alternatives": []
 }
