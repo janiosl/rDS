@@ -1,27 +1,27 @@
 {
-    "id": "3973D177",
-    "path": "D:/GitHub/rDS/r4ds/rds_cap14_pipes.R",
-    "project_path": "rds_cap14_pipes.R",
+    "id": "69FD2568",
+    "path": "D:/GitHub/rDS/r4ds/rds_cap15_funcs.R",
+    "project_path": "rds_cap15_funcs.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "4238229415",
     "contents": "",
     "dirty": false,
-    "created": 1662928706994.0,
+    "created": 1663022983494.0,
     "source_on_save": false,
-    "relative_order": 3,
+    "relative_order": 2,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "2,0",
-        "scrollLine": "0"
+        "cursorPosition": "72,0",
+        "scrollLine": "55"
     },
     "folds": "",
-    "lastKnownWriteTime": 1662931976,
+    "lastKnownWriteTime": 1663037514,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1662931976600,
+    "last_content_update": 1663037514629,
     "read_only": false,
     "read_only_alternatives": []
 }
