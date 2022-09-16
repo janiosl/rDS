@@ -64,10 +64,78 @@ rescale01(x)
 
 
 # Execução condicional ----------------------------------------------------
-has_name
+has_name <- function(x) {
+  nms <- names(x)
+  if (is.null(nms)) {
+    rep(FALSE, length(x))
+  } else {
+    !is.na(nms) && nms != ""
+  }
+}
+
+#Aplicação da função
+
+x <- c(1,2,3)
+x
+names(x)
+
+has_name(x)
+
+y <- tibble::tribble(
+  ~col1, ~col2, ~col3,
+  #----/------/-------
+  1, 2, 3,
+  2, 3, 4,
+  3, 4, 5
+)
+
+y
+names(y)
+has_name(y)
+
 
 #Condições inválidas
-if (c(TRUE, FALSE)) {}
-if (NA) {}
-identical(0L, 0)
+#if (c(TRUE, FALSE)) {} #Não roda
+#if (NA) {} #Não roda
+identical(0L, 0) #Roda, mas o resultado não é intuitivo
 
+#Múltiplas condições
+op <- "plus"
+
+opr <- function(x, y, op="plus"){
+  switch (op,
+    plus = x + y,
+    minus = x - y,
+    times = x * y,
+    divide = x / y,
+    stop("Operação desconhecida")
+  )
+}
+
+a <- 2
+b <- 2
+
+opr(a,b)
+opr(a,b,"minus")
+opr(a,b,"times")
+opr(a,b,"divide")
+
+opr(10,7,"minus")
+opr(10,7,"times")
+opr(10,7,"plus")
+
+# Argumentos de funções ----------------------------------------------------
+mean_c <- function(x, conf = 0.95) {
+  se <- sd(x) / sqrt(length(x))
+  alpha <- 1 - conf
+  mean(x) + se * qnorm(c(alpha / 2, 1 - alpha / 2))
+}
+
+x <- runif(100) #Dados de exemplo distribuição uniforme
+x
+plot(x)
+hist(x)
+
+mean_c(x)
+
+mean_c(x, 0.99)
