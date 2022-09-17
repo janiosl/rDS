@@ -139,3 +139,58 @@ hist(x)
 mean_c(x)
 
 mean_c(x, 0.99)
+
+
+# Verificar valores -------------------------------------------------------
+
+wt_mean <- function(x, w) {
+  if (length(x) != length(w)) {
+    stop("x and w must be the same length", call. = FALSE)
+  }
+  sum(w * x) / sum(x)
+}
+
+wt_mean(1:6, 1:6) #Funciona
+wt_mean(1:6, 1:3) #Erro aciona gatilho para exceção
+
+wt_mean <- function(x, w, na.rm = FALSE) {
+  stopifnot(is.logical(na.rm), length(na.rm) == 1)
+  stopifnot(length(x) == length(w))
+  
+  if (na.rm) {
+    miss <- is.na(x) | is.na(w)
+    x <- x[!miss]
+    w <- w[!miss]
+  }
+  sum(w * x) / sum(x)
+}
+
+wt_mean(1:6, 1:6) #Funciona
+wt_mean(c(2,2,NA,3,3), 1:5) #Funciona, mas retorna NA
+wt_mean(c(2,2,NA,3,3), 1:5, na.rm = TRUE) #Funciona
+wt_mean(1:6, 1:6, na.rm = "ERRO") #Erro aciona gatilho para exceção
+wt_mean(1:6, 1:3, na.rm = TRUE) #Erro aciona gatilho para exceção
+
+
+# Argumentos arbitrários com ... ------------------------------------------
+
+#Pesquisar, pois o conteúdo do livro não é bom
+
+
+# Funções passíveis de pipe -----------------------------------------------
+
+show_missings <- function(df) {
+  n <- sum(is.na(df))
+  cat("Missing values: ", n, "\n", sep = "")
+  invisible(df)
+}
+
+x <- show_missings(mtcars)
+class(x)
+dim(x)
+
+library(tidyverse)
+mtcars %>% 
+  show_missings() %>% 
+  mutate(mpg = ifelse(mpg < 20, NA, mpg)) %>% 
+  show_missings()

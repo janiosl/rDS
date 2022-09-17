@@ -3,7 +3,7 @@
     "path": "D:/GitHub/rDS/r4ds/rds_cap15_funcs.R",
     "project_path": "rds_cap15_funcs.R",
     "type": "r_source",
-    "hash": "343837860",
+    "hash": "3677164599",
     "contents": "",
     "dirty": false,
     "created": 1663022983494.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "141,0",
-        "scrollLine": "123"
+        "cursorPosition": "196,0",
+        "scrollLine": "178"
     },
     "folds": "",
-    "lastKnownWriteTime": 1663367772,
+    "lastKnownWriteTime": 1663377179,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1663367772360,
+    "last_content_update": 1663377179945,
     "read_only": false,
     "read_only_alternatives": []
 }
