@@ -168,8 +168,8 @@ wt_mean <- function(x, w, na.rm = FALSE) {
 wt_mean(1:6, 1:6) #Funciona
 wt_mean(c(2,2,NA,3,3), 1:5) #Funciona, mas retorna NA
 wt_mean(c(2,2,NA,3,3), 1:5, na.rm = TRUE) #Funciona
-wt_mean(1:6, 1:6, na.rm = "ERRO") #Erro aciona gatilho para exceção
-wt_mean(1:6, 1:3, na.rm = TRUE) #Erro aciona gatilho para exceção
+#wt_mean(1:6, 1:6, na.rm = "ERRO") #Erro aciona gatilho para exceção
+#wt_mean(1:6, 1:3, na.rm = TRUE) #Erro aciona gatilho para exceção
 
 
 # Argumentos arbitrários com ... ------------------------------------------
