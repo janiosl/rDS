@@ -108,3 +108,19 @@ v1 + v2
 #De maneira explícita pode ser feita
 tibble(x = 1:4, y = rep(1:2, 2))
 tibble(x = 1:4, y = rep(1:2, each = 2))
+
+
+#Vetores nomeados
+c(x = 1, y = 2, z = 4)
+vetor_nomeado = c(1,2,3)
+vetor_nomeado
+set_names(vetor_nomeado, c("a", "b", "c"))
+
+
+#Subconjuntos
+x <- c("one", "two", "three", "four", "five")
+x
+
+x[c(3,2,5)]
+x[c(1,1,5,5,5,2)]
+
