@@ -156,3 +156,37 @@ str(x_named)
 y <- list("a", 1L, 1.5, TRUE)
 y
 str(y)
+
+#Lista de listas
+z <- list(list(1,2),
+          list(3,4))
+str(z)
+z
+
+a <- list(a = 1:3,
+          b = "a string",
+          c = pi,
+          d = list(1,-5))
+
+str(a)
+
+#Subconjuntos de listas
+#Sublista [ -> Sempre retorna uma sublista
+str(a[1:2])
+str(a[4])
+str(a[3])
+
+#Componente único [[ -> Remove um nível de hierarquia
+str(y[[1]])
+str(y[[4]])
+str(a[[1]])
+str(a[[4]])
+str(a[[4]][[1]])
+str(a[[4]][[2]])
+
+#Elementos nomeados $ -> funciona como [[ sem aspas
+a$a
+a[["a"]]
+x_named$c
+x_named[["c"]]
+
