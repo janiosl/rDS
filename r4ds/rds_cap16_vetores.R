@@ -121,6 +121,38 @@ set_names(vetor_nomeado, c("a", "b", "c"))
 x <- c("one", "two", "three", "four", "five")
 x
 
+#Filtro por posição
 x[c(3,2,5)]
 x[c(1,1,5,5,5,2)]
 
+#Eliminação por posição
+#Não misturar negativo com positivo
+x[c(-1,-3,-5)]
+
+
+#Filtro lógico
+x <- c(10,3,NA,5,8,1,NA)
+x[!is.na(x)]
+x[x %% 2 == 0]
+
+#Filtro em vetor nomeado
+x <- c(abc = 1, def = 2, xyz = 3)
+x[c("xyz", "def")]
+x["abc"]
+
+
+# Vetores recursivos (listas) ---------------------------------------------
+
+x <- list(1,2,3)
+x
+
+str(x)
+
+x_named <- list(a = 1, b = 2, c = 3)
+x_named
+str(x_named)
+
+#Valores heterogêneos
+y <- list("a", 1L, 1.5, TRUE)
+y
+str(y)
