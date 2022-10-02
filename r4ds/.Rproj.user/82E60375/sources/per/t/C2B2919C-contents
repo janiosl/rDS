@@ -203,3 +203,63 @@ x
 attr(x, "farewell") <- "Bye"
 
 attributes(x)
+
+str(x)
+
+
+# Vetores aumentados ------------------------------------------------------
+##Fatores
+x <- factor(c("ab", "cd", "ab"),
+             levels = c("ab", "cd", "ef"))
+
+typeof(x)
+attributes(x)
+x
+
+##Datas e horas
+#Data
+x <- as.Date("1971-01-01")
+
+
+unclass(x)
+typeof(x)
+attributes(x)
+x
+
+#Data e hora
+x <- lubridate::ymd_hm("1970-01-01 01:00")
+unclass(x)
+typeof(x)
+attributes(x)
+x
+
+attr(x, "tzone") <- "US/Pacific"
+x
+
+attr(x, "tzone") <- "America/Sao_Paulo"
+x
+
+#Data e hora de listas nomeadas
+y <- as.POSIXlt(x)
+typeof(y)
+attributes(y)
+
+#Convertendo de volta de lt para data normal
+lubridate::as_datetime(y)
+
+##Tibbles
+tb <- tibble::tibble(x = 1:5,
+                     y = 5:1)
+tb
+
+typeof(tb)
+attributes(tb)
+
+##Data frame
+df <- data.frame(x = 1:5,
+                 y = 5:1)
+
+df
+
+typeof(df)
+attributes(df)
