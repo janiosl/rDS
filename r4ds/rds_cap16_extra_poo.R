@@ -97,18 +97,49 @@ f(structure(list(), class = "c"))
 
 
 #Example
-serie <- structure(list(), class = "serie")
-
-serie <- function(x) {
-  if (!is.numeric(x)) stop("The serie must be numeric")
-  structure(list(x), class = "serie")
+pop <- structure(list(), class = "pop")
+pop <- function(x) {
+  if (!is.numeric(x)) stop("X must be numeric")
+  structure(list(x), class = "pop")
 }
 
-s <- serie(c(1,2,3))
-class(s)
-typeof(s)
+amo <- structure(list(), class = "amo")
+amo <- function(x) {
+  if (!is.numeric(x)) stop("X must be numeric")
+  structure(list(x), class = "amo")
+}
 
-ns <- serie(c("a", "b", "c"))
-
+#Generic function and methods
 media <- function(x) UseMethod("media")
 class(media)
+
+media.default <- function(x) {
+  sum(x[[1]])/length(x[[1]])
+}
+
+
+variancia <- function(x) UseMethod("variancia")
+
+variancia.pop <- function(x) "Variancia da populução usa n"
+#Acrescentar código da variancia populacional
+
+variancia.amo <- function(x) "Variancia da amostra usa n-1"
+#Acrescentar código da variância amostral
+
+#Apply classes and methods
+p <- pop(c(1,2,3))
+class(p)
+typeof(p)
+
+#Test for numeric rule
+#ns <- pop(c("a", "b", "c"))
+
+a <- amo(c(1,2,3))
+class(a)
+typeof(a)
+
+media(p)
+media(a)
+
+variancia(p)
+variancia(a)
