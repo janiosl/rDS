@@ -1,4 +1,4 @@
-
+## R OO --> http://adv-r.had.co.nz/OO-essentials.html
 # Base Types --------------------------------------------------------------
 
 #Function is C structure
@@ -81,3 +81,34 @@ f(a)
 mean.a <- function(x) "a"
 mean(a)
 
+#Method dispatch
+f <- function(x) UseMethod("f")
+f.a <- function(x) "Class a"
+f.default <- function(x) "Unknown class"
+
+#Using with a known class
+f(structure(list(), class = "a"))
+
+# No method for b class, so uses method for a class
+f(structure(list(), class = c("b", "a")))
+
+# No method for c class, so falls back to default
+f(structure(list(), class = "c"))
+
+
+#Example
+serie <- structure(list(), class = "serie")
+
+serie <- function(x) {
+  if (!is.numeric(x)) stop("The serie must be numeric")
+  structure(list(x), class = "serie")
+}
+
+s <- serie(c(1,2,3))
+class(s)
+typeof(s)
+
+ns <- serie(c("a", "b", "c"))
+
+media <- function(x) UseMethod("media")
+class(media)

@@ -94,3 +94,21 @@ f(structure(list(), class = c("b", "a")))
 
 # No method for c class, so falls back to default
 f(structure(list(), class = "c"))
+
+
+#Example
+serie <- structure(list(), class = "serie")
+
+serie <- function(x) {
+  if (!is.numeric(x)) stop("The serie must be numeric")
+  structure(list(x), class = "serie")
+}
+
+s <- serie(c(1,2,3))
+class(s)
+typeof(s)
+
+ns <- serie(c("a", "b", "c"))
+
+media <- function(x) UseMethod("media")
+class(media)
