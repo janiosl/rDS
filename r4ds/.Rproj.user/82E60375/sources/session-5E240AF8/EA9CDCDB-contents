@@ -96,7 +96,10 @@ f(structure(list(), class = c("b", "a")))
 f(structure(list(), class = "c"))
 
 
-#Example
+
+# Example ----------------------------------------------------------------
+
+
 pop <- structure(list(), class = "pop")
 pop <- function(x) {
   if (!is.numeric(x)) stop("X must be numeric")
@@ -127,13 +130,13 @@ variancia <- function(x) UseMethod("variancia")
 variancia.pop <- function(x) {
   "Variância da populução usa n"
   #Acrescentar código da variancia populacional
-  return(sum(diff(x[[1]])^2)/(length(x[[1]])))
+  return(sum((x[[1]] - media(x))^2)/length(x[[1]]))
 }
 
 variancia.amo <- function(x) {
   "Variância da amostra usa n-1"
   #Acrescentar código da variância amostral
-  return(sum(diff(x[[1]])^2)/(length(x[[1]])-1))
+  return(sum((x[[1]] - media(x))^2)/(length(x[[1]])-1))
   
 }
 variancia.default <- function(x) {
@@ -141,10 +144,7 @@ variancia.default <- function(x) {
 }
 
 #Apply classes and methods
-p <- pop(c(1,2,3,4,5,6,7,8,9,
-           10,11,12,13,14,15,16,17,18,19,
-           20,21,22,23,24,25,26,27,28,29,
-           30,31,32,33,34,35,36,37,38,39))
+p <- pop(sample(1:1000, 30))
 class(p)
 typeof(p)
 p
@@ -166,26 +166,32 @@ variancia(p)
 variancia(a)
 variancia(c(1,2,3))
 
-a
-a[[1]]
-diff(a[[1]])
-diff(a[[1]])^2
-sum(diff(a[[1]])^2)
-
-sum(diff(a[[1]])^2)/(length(a[[1]])-1)
 var(a[[1]])
 
-p[[1]]
-diff(p[[1]])
-diff(p[[1]])^2
-sum(diff(p[[1]])^2)/(length(p[[1]]))
 
-x <- c(1,2,3,4,5,6,7,8,9,
-       10,11,12,13,14,15,16,17,18,19,
-       20,21,22,23,24,25,26,27,28,29,
-       30,31,32,33,34,35,36,37,38,39)
-
-a2 <- amo(x)
+a2 <- amo(p[[1]])
 a2
 
+var(p[[1]])
 variancia(a2)
+
+
+pesos <- c(2.64, 2.38, 2.30, 2.69, 2.32, 2.66, 2.36, 2.70, 2.49, 1.56,
+           2.33, 2.26, 2.15, 2.45, 2.02, 2.73, 3.09, 2.47, 2.44, 2.79)
+
+mean(pesos)
+media(pesos)
+
+var(pesos)
+variancia(pesos)
+
+pesos_a <- amo(pesos)
+pesos_a
+
+media(pesos_a)
+variancia(pesos_a)
+
+pesos_p <- pop(pesos)
+pesos_p
+
+variancia(pesos_p)
