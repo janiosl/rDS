@@ -182,16 +182,20 @@ pesos <- c(2.64, 2.38, 2.30, 2.69, 2.32, 2.66, 2.36, 2.70, 2.49, 1.56,
 mean(pesos)
 media(pesos)
 
+#Iguais pois usa a fórmula da variância amostral
 var(pesos)
 variancia(pesos)
 
 pesos_a <- amo(pesos)
 pesos_a
 
-media(pesos_a)
+#Iguais pois usa a fórmula da variância amostral
+var(pesos_a[[1]])
 variancia(pesos_a)
 
 pesos_p <- pop(pesos)
 pesos_p
 
+#Diferentes, pois um usa variância amostral e o outro populacional
+var(pesos_p[[1]])
 variancia(pesos_p)
