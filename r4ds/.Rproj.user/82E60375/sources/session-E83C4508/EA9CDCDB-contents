@@ -97,7 +97,7 @@ f(structure(list(), class = "c"))
 
 
 
-# Example ----------------------------------------------------------------
+# Example S3 ----------------------------------------------------------------
 
 
 pop <- structure(list(), class = "pop")
@@ -199,3 +199,68 @@ pesos_p
 #Diferentes, pois um usa variância amostral e o outro populacional
 var(pesos_p[[1]])
 variancia(pesos_p)
+
+
+# S4 OO -------------------------------------------------------------------
+
+#Recognising S4 Objects
+library(stats4)
+
+y <- c(26, 17, 13, 12, 20, 5, 9, 8, 5, 4, 8)
+nLL <- function(lambda) - sum(dpois(y, lambda, log = TRUE))
+fit <- mle(nLL, start = list(lambda = 5), nobs = length(y))
+
+isS4(fit)
+typeof(fit)
+otype(fit)
+
+# S4 generic
+isS4(nobs)
+ftype(nobs)
+
+is(fit)
+is(fit, "mle")
+
+#Defining classes and creating objects
+setClass("Person",
+         slots = list(name = "character", age = "numeric"))
+setClass("Employee",
+         slots = list(boss = "Person"),
+         contains = "Person")
+
+alice <- new("Person", name = "Alice", age = 40)
+john <- new("Employee", name = "John", age = 20, boss = alice)
+
+alice
+john
+
+alice@age
+
+slot(john, "boss")
+
+#S4 object that contains (inherits from) an S3 class or a base type
+setClass("RangedNumeric",
+         contains = "numeric",
+         slots = list(min = "numeric", max = "numeric"))
+rn <- new("RangedNumeric", 1:10, min = 1, max = 10)
+rn@min
+
+rn@.Data
+
+#Creating new methods and generics
+setGeneric("union")
+
+
+setMethod("union",
+          c(x = "data.frame", y = "data.frame"),
+          function(x, y) {
+            unique(rbind(x, y))
+          }
+)
+
+
+# From methods: takes generic name and class names
+selectMethod("nobs", list("mle"))
+
+# From pryr: takes an unevaluated function call
+method_from_call(nobs(fit))
