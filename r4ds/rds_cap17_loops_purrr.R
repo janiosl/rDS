@@ -64,7 +64,7 @@ flips
 
 # Abordagem funcional -----------------------------------------------------
 
-
+#Iteração e função como argumento de outra função
 col_summary <- function(df, fun){
   out <- vector("double", length(df))
   for (i in seq_along(df)) {
@@ -72,5 +72,6 @@ col_summary <- function(df, fun){
   }
   out
 }
+
 col_summary(df, median)
 col_summary(df, mean)
