@@ -3,7 +3,7 @@
     "path": "D:/GitHub/rDS/r4ds/rds_cap17_loops_purrr.R",
     "project_path": "rds_cap17_loops_purrr.R",
     "type": "r_source",
-    "hash": "751146358",
+    "hash": "1897310869",
     "contents": "",
     "dirty": false,
     "created": 1665260856458.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "77,0",
-        "scrollLine": "53"
+        "cursorPosition": "108,0",
+        "scrollLine": "84"
     },
     "folds": "",
-    "lastKnownWriteTime": 1665267155,
+    "lastKnownWriteTime": 1666053520,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1665267155441,
+    "last_content_update": 1666053520537,
     "read_only": false,
     "read_only_alternatives": []
 }

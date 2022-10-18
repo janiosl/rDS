@@ -75,3 +75,34 @@ col_summary <- function(df, fun){
 
 col_summary(df, median)
 col_summary(df, mean)
+
+
+# Funções Map -------------------------------------------------------------
+
+map_dbl(df, mean)
+map_dbl(df, median)
+
+#Map usando pipe
+df %>% map_dbl(mean)
+
+df %>% map_dbl(median)
+
+df %>% map_dbl(sd)
+
+
+#Tratamento de falhas
+safe_log <- safely(log) #Cria versão segura da função
+safe_log(10)
+
+safe_log("a")
+
+#Map + Safe
+x <- list(1, 10, "a")
+y <- x %>% map(safely(log))
+
+str(y)
+
+#Separação dos resultados (results e errors)
+y <- y %>% transpose()
+str(y)
+y$result
