@@ -162,3 +162,30 @@ params
 params %>% 
   pmap(rnorm)
 
+
+# Mapeando múltiplas funções ----------------------------------------------
+
+f <- c("runif", "rnorm", "rpois")
+
+param <- list(
+  list(min = -1, max = 1),
+  list(sd = 5),
+  list(lambda = 10)
+)
+
+invoke_map(f, param, n = 5) %>% str()
+
+#Organizando funções e argumentos
+sim <- tribble(
+  ~f, ~param,
+  #---/------
+  "runif", list(min = -1, max =1),
+  "rnorm", list(sd = 5),
+  "rpois", list(lambda = 10)
+)
+
+sim
+
+sim %>% 
+  mutate(sim = invoke_map(f, param, n = 10))
+
