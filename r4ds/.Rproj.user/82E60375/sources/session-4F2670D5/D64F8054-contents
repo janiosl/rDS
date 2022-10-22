@@ -106,3 +106,59 @@ str(y)
 y <- y %>% transpose()
 str(y)
 y$result
+
+
+#Possibly
+x <- list(1, 10, "a")
+x %>% map_dbl(possibly(log, NA_real_))
+
+#Quietly
+x <- list(1, -1)
+x %>% map(quietly(log)) %>% str()
+
+
+# Map com múltiplos argumentos --------------------------------------------
+
+#Variando apenas a média no map
+mu <- list(5, 10, -3)
+mu %>% 
+  map(rnorm, n = 5) %>% 
+  str()
+
+#Variando média e desvio padrão
+sigma <- list(1,5,10)
+
+map2(mu, sigma, rnorm, n = 5)
+
+#Variando mais argumentos com pmap
+n <- list(1,3,5)
+
+args1 <- list(n,mu,sigma)
+args1
+
+args1 %>% 
+  pmap(rnorm) %>% 
+  str()
+
+#Nomeando argumentos
+args2 <- list(mean = mu, sd = sigma, n = n)
+args2
+
+args2 %>% 
+  pmap(rnorm) %>% 
+  str()
+
+#Usando data frame
+params <- tribble(
+  ~mean, ~sd, ~n,
+  #-----/----/-----
+  5, 1, 1,
+  10, 5, 3,
+  -3, 10, 5
+)
+
+params
+
+params %>% 
+  pmap(rnorm)
+

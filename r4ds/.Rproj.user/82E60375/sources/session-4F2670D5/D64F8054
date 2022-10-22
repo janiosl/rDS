@@ -1,27 +1,27 @@
 {
-    "id": "69FD2568",
-    "path": "D:/GitHub/rDS/r4ds/rds_cap15_funcs.R",
-    "project_path": "rds_cap15_funcs.R",
+    "id": "D64F8054",
+    "path": "D:/GitHub/rDS/r4ds/rds_cap17_loops_purrr.R",
+    "project_path": "rds_cap17_loops_purrr.R",
     "type": "r_source",
-    "hash": "634317326",
+    "hash": "4028620770",
     "contents": "",
     "dirty": false,
-    "created": 1663022983494.0,
+    "created": 1665260856458.0,
     "source_on_save": false,
-    "relative_order": 2,
+    "relative_order": 4,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "196,0",
-        "scrollLine": "0"
+        "cursorPosition": "164,0",
+        "scrollLine": "140"
     },
     "folds": "",
-    "lastKnownWriteTime": 1664458351,
+    "lastKnownWriteTime": 1666474596,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1664458351936,
+    "last_content_update": 1666474596337,
     "read_only": false,
     "read_only_alternatives": []
 }
