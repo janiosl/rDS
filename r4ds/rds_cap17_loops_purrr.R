@@ -189,3 +189,32 @@ sim
 sim %>% 
   mutate(sim = invoke_map(f, param, n = 10))
 
+
+# Reduce e Acumulate ------------------------------------------------------
+
+dfs <- list(
+  age = tibble(name = "John", age = 30),
+  sex = tibble(name = c("John", "Mary"), sex = c("M", "F")),
+  trt = tibble(name = "Mary", treatment = "A")
+)
+
+dfs
+
+df <- dfs %>% reduce(full_join)
+df
+
+df %>% 
+  filter(name == "Mary") %>% 
+  mutate(age = 27)
+
+
+vs <- list(
+  c(1,3,5),
+  c(1,3,5,7),
+  c(1,3,5,7,9)
+)
+
+vs
+
+vs %>% reduce(intersect)
+
