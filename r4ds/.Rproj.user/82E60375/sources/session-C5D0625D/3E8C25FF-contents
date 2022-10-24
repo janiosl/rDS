@@ -83,3 +83,23 @@ grid %>%
   geom_point(aes(color = -dist))
 
 
+#Visualização dos modelos gerados por grid
+ggplot(sim1, aes(x, y)) + 
+  geom_point(size = 2, color = "grey30") + 
+  geom_abline(
+    aes(intercept = a1, slope = a2, color = -dist),
+    data = filter(grid, rank(dist) <= 10)
+  )
+
+#Otimização para encontrar modelo adequado
+best <- optim(c(0, 0), measure_distance, data = sim1)
+
+best$par
+
+ggplot(sim1, aes(x, y)) + 
+  geom_point(size = 2, color = "grey30") + 
+  geom_abline(intercept = best$par[1], slope = best$par[2], color = "red")
+
+#Modelagem usando ferramenta lm
+sim1_mod <- lm(y ~ x, data = sim1)
+coef(sim1_mod)
