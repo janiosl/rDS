@@ -100,6 +100,14 @@ ggplot(sim1, aes(x, y)) +
   geom_point(size = 2, color = "grey30") + 
   geom_abline(intercept = best$par[1], slope = best$par[2], color = "red")
 
+
 #Modelagem usando ferramenta lm
 sim1_mod <- lm(y ~ x, data = sim1)
 coef(sim1_mod)
+
+#Visualização do modelo
+ggplot(sim1, aes(x, y)) + 
+  geom_point(size = 2, color = "grey30") + 
+  geom_abline(intercept = as.list(coef(sim1_mod))[[1]],
+              slope = as.list(coef(sim1_mod))[[2]],
+              color = "blue")
