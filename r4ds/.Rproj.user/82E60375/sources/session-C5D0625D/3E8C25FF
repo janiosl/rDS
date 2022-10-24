@@ -1,27 +1,27 @@
 {
-    "id": "D64F8054",
-    "path": "D:/GitHub/rDS/r4ds/rds_cap17_loops_purrr.R",
-    "project_path": "rds_cap17_loops_purrr.R",
+    "id": "3E8C25FF",
+    "path": "D:/GitHub/rDS/r4ds/rds_cap18_modelos_basico.R",
+    "project_path": "rds_cap18_modelos_basico.R",
     "type": "r_source",
-    "hash": "4271428846",
+    "hash": "4035698214",
     "contents": "",
     "dirty": false,
-    "created": 1665260856458.0,
+    "created": 1666639931626.0,
     "source_on_save": false,
-    "relative_order": 4,
+    "relative_order": 2,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "220,0",
-        "scrollLine": "196"
+        "cursorPosition": "84,0",
+        "scrollLine": "60"
     },
     "folds": "",
-    "lastKnownWriteTime": 1666554259,
+    "lastKnownWriteTime": 1666648021,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1666554259457,
+    "last_content_update": 1666648021338,
     "read_only": false,
     "read_only_alternatives": []
 }
