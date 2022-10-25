@@ -2,6 +2,10 @@ library(tidyverse)
 library(modelr)
 options(na.action = na.warn)
 
+
+# Visualização de modelos -------------------------------------------------
+
+
 grid <- sim1 %>% 
   data_grid(x)
 grid
@@ -40,3 +44,44 @@ ggplot(sim1, aes(resid)) +
 ggplot(sim1, aes(x, resid)) + 
   geom_ref_line(h = 0) + 
   geom_point()
+
+
+# Fórmulas e famílias de modelos ------------------------------------------
+
+#Variáveis categóricas
+df <- tribble(
+  ~sex,    ~response,
+  #--------/---------
+  "male",   1,
+  "female", 2,
+  "male",   1
+)
+
+df
+
+#Analisando como um modelo com var. categórica é construído
+model_matrix(df, response ~ sex)
+
+#Exemplo com dataset sim2
+ggplot(sim2) +
+  geom_point(aes(x,y))
+
+mod2 <- lm(y ~ x, data = sim2)
+mod2
+
+grid <- sim2 %>% 
+  data_grid(x) %>% 
+  add_predictions(mod2)
+
+grid
+
+#Visualização do modelo
+ggplot(sim2, aes(x)) +
+  geom_point(aes(y = y)) +
+  geom_point(
+    data = grid,
+    aes(y = pred),
+    color = "red",
+    size = 4,
+    alpha = 1/2
+  )
