@@ -3,8 +3,6 @@ library(tidyverse)
 library(modelr)
 options(na.action = na.warn)
 library(lubridate)
-#Datasets
-library(nycflights13)
 
 
 # Preços e qualidade de diamantes -----------------------------------------
