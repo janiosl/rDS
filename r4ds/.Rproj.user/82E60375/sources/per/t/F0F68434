@@ -3,7 +3,7 @@
     "path": "D:/GitHub/rDS/r4ds/rds_cap18_modelos_prev.R",
     "project_path": "rds_cap18_modelos_prev.R",
     "type": "r_source",
-    "hash": "745123767",
+    "hash": "1615752054",
     "contents": "",
     "dirty": false,
     "created": 1666651232279.0,
@@ -17,11 +17,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1666653096,
+    "lastKnownWriteTime": 1666703303,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1666653096631,
+    "last_content_update": 1666703303,
     "read_only": false,
     "read_only_alternatives": []
 }
