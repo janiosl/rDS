@@ -3,7 +3,7 @@
     "path": "D:/GitHub/rDS/r4ds/rds_cap19_modelos_constr.R",
     "project_path": "rds_cap19_modelos_constr.R",
     "type": "r_source",
-    "hash": "1663486815",
+    "hash": "2262983437",
     "contents": "",
     "dirty": false,
     "created": 1667266481878.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "87,0",
-        "scrollLine": "59"
+        "cursorPosition": "97,0",
+        "scrollLine": "69"
     },
     "folds": "",
-    "lastKnownWriteTime": 1667313515,
+    "lastKnownWriteTime": 1667323535,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1667313515695,
+    "last_content_update": 1667323535705,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -85,3 +85,13 @@ grid_mpg
 ggplot(mpg2, aes(displ, hwy)) + 
   geom_hex(bins = 20) +
   geom_line(data = grid_mpg, color = "red", size = 1)
+
+
+
+# Continuação avaliação de preços -----------------------------------------
+
+diamonds2 <- diamonds2 %>% 
+  add_residuals(mod_diamonds, "lresid")
+
+ggplot(diamonds2, aes(lcarat, lresid)) + 
+  geom_hex(bins = 50)
