@@ -129,3 +129,4 @@ diamonds2 %>%
   mutate(pred = round(2 ^ pred)) %>% 
   select(price, pred, carat:table, x:z) %>% 
   arrange(price)
+
