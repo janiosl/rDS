@@ -1,0 +1,7 @@
+"0","plot(stocks$Date, stocks$Close,"
+"0","     type = ""l"","
+"0","     main = ""Série temporal de preço de fechamento"""
+"0","     )"
+"2","Error in title(...) : 
+  invalid input 'S�rie temporal de pre�o de fechamento' in 'utf8towcs'
+"

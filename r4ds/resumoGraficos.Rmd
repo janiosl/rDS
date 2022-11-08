@@ -57,7 +57,7 @@ Este trabalho tem objetivo de apresentar uma introdução à análise visual usa
 # Tipos básicos de gráficos
 
 ```{r stock_price, warning=FALSE, results='hide'}
-library(tidyverse)
+library(tidyverse, warn.conflicts = FALSE, verbose = FALSE, quietly = TRUE)
 arquivo <- "https://raw.githubusercontent.com/janiosl/python.ds/master/data/yahoo_stock_12-12-2020.csv"
 stocks <- read_csv(arquivo)
 ```
@@ -83,7 +83,7 @@ plot(stocks$Close,
 ```{r}
 plot(stocks$Date, stocks$Close,
      type = "l",
-     main = "Série temporal preço de fechamento"
+     main = "Série temporal de preço de fechamento"
      )
 ```
 

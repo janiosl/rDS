@@ -1,0 +1,5 @@
+"0","boxplot(stocks$Close,"
+"0","        main = ""Boxplot preço de fechamento"")"
+"2","Error in (function (main = NULL, sub = NULL, xlab = NULL, ylab = NULL,  : 
+  invalid input 'Boxplot pre�o de fechamento' in 'utf8towcs'
+"

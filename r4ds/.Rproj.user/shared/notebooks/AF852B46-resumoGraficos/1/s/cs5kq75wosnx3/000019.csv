@@ -1,0 +1,2 @@
+"0","#Gráfico de dispersão usando R base"
+"0","plot(x = mtcars$disp, y = mtcars$mpg)"

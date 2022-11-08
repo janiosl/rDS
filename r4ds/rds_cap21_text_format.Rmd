@@ -3,8 +3,8 @@ title: "Formatação de texto com Markdown"
 author: "Janio Lima"
 date: '2022-11-05'
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -45,7 +45,7 @@ Links and images
 
 (Linked phrase)<http://www.youtube.com/pythonds>
 
-![optional caption text](D:\\R\\arules_matrix_graph.jpeg)
+![optional caption text](git_resume.png)
 
 
 Tables
