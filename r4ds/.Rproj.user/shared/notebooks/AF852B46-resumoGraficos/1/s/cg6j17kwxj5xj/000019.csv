@@ -1,0 +1,5 @@
+"0","barplot(mtcars[1:4,]$mpg,"
+"0","        width = 0.7,"
+"0","        names = row.names(mtcars[1:4,]),"
+"0","        main = ""Consumo (milhas por galão)"""
+"0","        )"

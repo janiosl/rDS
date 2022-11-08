@@ -1,0 +1,3 @@
+"0",""
+"0","ggplot(diamonds, aes(cut)) + "
+"0","  geom_bar()"

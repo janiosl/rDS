@@ -1,0 +1,6 @@
+"0",""
+"0","diamonds %>% "
+"0","  arrange(desc(carat)) %>% "
+"0","  head(100) %>% "
+"0","  select(carat, cut, color, price) %>% "
+"0","  DT::datatable()"

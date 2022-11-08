@@ -3,16 +3,18 @@ title: "Introdução à Análise Gráfica com R base"
 author: "Janio Lima"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  html_document:
+  pdf_document:
     toc: true
     number_sections: true
-  pdf_document:
+  html_document:
     toc: true
     number_sections: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.width=6, fig.asp=0.618, out.width="70%",
+                      fig.align='center')
 ```
 
 # Introdução
@@ -89,12 +91,12 @@ plot(stocks$Date, stocks$Close,
 
 
 
-```{r, warning=FALSE}
+```{r}
 boxplot(stocks$Close,
         main = "Boxplot preço de fechamento")
 ```
 
-```{r, warning=FALSE}
+```{r}
 boxplot(stocks$Close,
         stocks$Open,
         stocks$High,
@@ -102,14 +104,14 @@ boxplot(stocks$Close,
         names = c("Close", "Open", "High", "Low"),
         main = "Boxplot preços")
 ```
-```{r, warning=FALSE}
+```{r}
 barplot(mtcars[1:4,]$mpg,
         width = 0.7,
         names = row.names(mtcars[1:4,]),
         main = "Consumo (milhas por galão)"
         )
 ```
-```{r, warning=FALSE}
+```{r}
 
 hist(mtcars$mpg)
 

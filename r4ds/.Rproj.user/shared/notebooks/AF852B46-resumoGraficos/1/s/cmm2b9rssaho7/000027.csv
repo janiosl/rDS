@@ -1,0 +1,6 @@
+"0","knitr::kable("
+"0","  head(mtcars),"
+"0","  caption = ""Dataset mtcars: primeiras observações"""
+"0",")"
+"1","[WARNING] C:\Users\janio\AppData\Local\Temp\RtmpuIDqTI\_rs_md_2894927626e.md is not UTF-8 encoded: falling back to latin1.
+"

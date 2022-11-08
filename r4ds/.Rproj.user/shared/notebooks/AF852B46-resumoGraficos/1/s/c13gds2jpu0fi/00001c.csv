@@ -1,0 +1,2 @@
+"0","boxplot(stocks$Close,"
+"0","        main = ""Boxplot preço de fechamento"")"
