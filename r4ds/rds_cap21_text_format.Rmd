@@ -1,0 +1,81 @@
+---
+title: "Formatação de texto com Markdown"
+author: "Janio Lima"
+date: '2022-11-05'
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Text formatting
+---------------------------------------------------
+*italic* or _italic_
+
+**bold** or __bold__
+
+`code`
+
+superscript^2^ and subscript~2
+
+
+Headings
+---------------------------------------------------
+# 1st level Header
+## 2nd Level Header
+### 3rd Level Header
+
+
+Lists
+---------------------------------------------------
+* Bulleted list item 1
+* Item 2
+    * Item 2a
+    * Item 2b
+    
+1. Numbered list item 1
+1. Item 2. The numbers are incremented automatically in the output
+
+Links and images
+---------------------------------------------------
+<http://www.pythonds.com.br>
+
+(Linked phrase)<http://www.youtube.com/pythonds>
+
+![optional caption text](D:\\R\\arules_matrix_graph.jpeg)
+
+
+Tables
+---------------------------------------------------
+First Header  | Second Header
+------------- | --------------
+Content cell | Content cell
+Content cell | Content cell
+
+Code
+---------------------------------------------------
+```{r}
+print("Olá RMarkdown")
+```
+Tabela através de código
+
+### Without a good format
+
+```{r}
+mtcars[1:5,]
+```
+
+
+### With a good format
+
+```{r}
+knitr::kable(
+  mtcars[1:5,],
+  caption = "A knit table"
+)
+```
+
+ 
