@@ -49,6 +49,10 @@ diamonds %>%
   DT::datatable()
 ```
 
+### Diamonds analysis
+As we can see most diamonds are less than 2 carats and the mode is between 0 and 1 carat. The three charts on the left summarize the main features that can influence prices. The table on the right side of the panel shows the biggest diamonds and their prices.
+
+
 # Mapa
 ```{r}
 library(leaflet)
