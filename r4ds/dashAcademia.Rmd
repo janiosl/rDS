@@ -1,6 +1,6 @@
 ---
 title: "Academia Financeira"
-author: "Análise de Turmas 2022"
+author: "Análise de Turmas"
 date: '`r format(Sys.time(), "%B/%Y")`'
 output: flexdashboard::flex_dashboard
 ---
@@ -40,38 +40,45 @@ cursos <- inner_join(cursos, av_t)
 
 ## Coluna 1
 
-### Alunos por turma
+### Alunos por Turma
 ```{r}
+md <- median(turmas$alunos)
+
 ggplot(turmas, aes(x = id, y = alunos)) +
   geom_point() + 
   geom_line() + 
-  geom_smooth() +
+  geom_hline(yintercept = md, colour = "#4682B4", size = 2) + 
+  geom_text(aes(2, md, label = "Mediana", vjust = -0.5), colour = "#6A5ACD") + 
+  geom_smooth(colour = "#6A5ACD") +
   labs(x = "Turma",
        y = "Quant. Alunos")
 ```
 
-### Distribuição da quantidade de alunos
+### Distribuição da Quantidade de Alunos
 ```{r}
 ggplot(turmas, aes(alunos)) + 
-  geom_boxplot() + 
+  geom_boxplot(fill = "#B0C4DE", colour = "#4682B4") + 
+  scale_y_continuous(labels = NULL, breaks = NULL) +
+  scale_x_continuous(breaks = seq(min(turmas$alunos), max(turmas$alunos), by = 5)) +
+  theme(panel.background = element_rect(fill = "white")) +
   labs(x = "Alunos")
 ```
 
 
-### Avaliação das turmas
+### Avaliação das Turmas
 
 ```{r}
 ggplot(turmas, aes(aval)) + 
-  geom_histogram() + 
+  geom_histogram(fill = "#4682B4") + 
   labs(x = "Notas",
-       y = "Quantidade de turmas")
+       y = "Quant. Turmas")
 ```
 
 
 
 ## Turmas no período
 
-### Informações sobre turmas
+### Informações sobre Turmas
 
 ```{r}
 datatable(turmas)
@@ -98,17 +105,20 @@ atendidos <- sum(turmas$alunos)
 | **CARGA HORÁRIA** | `r sum(cursos$carga_horaria * cursos$turmas)` horas |
 
 
-### Distribuição da avaliação dos cursos
+### Distribuição da Avaliação dos Cursos
 
 ```{r}
 ggplot(cursos, aes(aval_item)) + 
-  geom_boxplot()
+  geom_boxplot(fill = "#B0C4DE", outlier.colour = "red", colour = "#4682B4") + 
+  scale_y_continuous(labels = NULL, breaks = NULL) +
+  theme(panel.background = element_rect(fill = "white")) +
+  labs(x = "Notas")
 ```
 
 
 ## Coluna 2
 
-### Cursos na carteira da Academia UP Financeira
+### Cursos na Carteira da Academia UP Financeira
 ```{r}
 datatable(cursos)
 ```
