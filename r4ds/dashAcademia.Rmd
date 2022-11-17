@@ -1,0 +1,125 @@
+---
+title: "Academia Financeira"
+author: "Análise de Turmas"
+date: '`r format(Sys.time(), "%B/%Y")`'
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(DT)
+knitr::opts_chunk$set(fig.width = 6, fig.asp = 1/2.5)
+```
+
+```{r dados}
+n_cursos <- 33
+n_turmas <- 150
+
+cursos <- tibble(
+  item = c(1:n_cursos),
+  carga_horaria = sample(c(4,8,16,24,32), size = n_cursos, replace = TRUE)
+)
+
+turmas <- tibble(
+  id = c(1:n_turmas),
+  alunos = sample(c(10:40), size = n_turmas, replace = TRUE),
+  item = sample(cursos$item, n_turmas, replace = TRUE),
+  aval = round(rnorm(n_turmas, mean = 3.5, sd = 1))
+)
+
+av_t <- turmas %>% 
+  group_by(item) %>% 
+  summarize(aval_item = round(mean(aval), 1),
+            turmas = n())
+
+cursos <- inner_join(cursos, av_t)
+```
+
+# Turmas
+
+## Coluna 1
+
+### Alunos por Turma
+```{r}
+md <- median(turmas$alunos)
+
+ggplot(turmas, aes(x = id, y = alunos)) +
+  geom_point() + 
+  geom_line() + 
+  geom_hline(yintercept = md, colour = "#4682B4", size = 2) + 
+  geom_text(aes(2, md, label = "Mediana", vjust = -0.5), colour = "#6A5ACD") + 
+  geom_smooth(colour = "#6A5ACD") +
+  labs(x = "Turma",
+       y = "Quant. Alunos")
+```
+
+### Distribuição da Quantidade de Alunos
+```{r}
+ggplot(turmas, aes(alunos)) + 
+  geom_boxplot(fill = "#B0C4DE", colour = "#4682B4") + 
+  scale_y_continuous(labels = NULL, breaks = NULL) +
+  scale_x_continuous(breaks = seq(min(turmas$alunos), max(turmas$alunos), by = 5)) +
+  theme(panel.background = element_rect(fill = "white")) +
+  labs(x = "Alunos")
+```
+
+
+### Avaliação das Turmas
+
+```{r}
+ggplot(turmas, aes(aval)) + 
+  geom_histogram(fill = "#4682B4") + 
+  labs(x = "Notas",
+       y = "Quant. Turmas")
+```
+
+
+
+## Turmas no período
+
+### Informações sobre Turmas
+
+```{r}
+datatable(turmas)
+```
+
+# Cursos
+
+## Coluna 1
+### Indicadores de Desempenho
+
+```{r indicadores}
+aval_geral <- mean(turmas$aval)
+media_alunos <- round(mean(turmas$alunos))
+atendidos <- sum(turmas$alunos)
+```
+
+| Indicador | Resultado |
+|---------------------------:|:---------------------------|
+| **AVALIAÇÃO GERAL**      | `r round(aval_geral, 1)` |
+| **ALUNOS ATENDIDOS**     | `r atendidos` |
+| **ALUNOS POR TURMA**     | `r media_alunos` |
+| **QUANTIDADE DE CURSOS** | `r nrow(cursos)` |
+| **QUANTIDADE DE TURMAS** | `r nrow(turmas)` |
+| **CARGA HORÁRIA** | `r sum(cursos$carga_horaria * cursos$turmas)` horas |
+
+
+### Distribuição da Avaliação dos Cursos
+
+```{r}
+ggplot(cursos, aes(aval_item)) + 
+  geom_boxplot(fill = "#B0C4DE", outlier.colour = "red", colour = "#4682B4") + 
+  scale_y_continuous(labels = NULL, breaks = NULL) +
+  theme(panel.background = element_rect(fill = "white")) +
+  labs(x = "Notas")
+```
+
+
+## Coluna 2
+
+### Cursos na Carteira da Academia UP Financeira
+```{r}
+datatable(cursos)
+```
+

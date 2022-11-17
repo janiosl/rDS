@@ -10,6 +10,8 @@ library(ggplot2)
 library(dplyr)
 knitr::opts_chunk$set(fig.width = 5, fig.asp = 1/3)
 ```
+# Visualização
+
 ## Column 1
 
 ### Carat
@@ -47,7 +49,11 @@ diamonds %>%
   DT::datatable()
 ```
 
-# Interativo
+### Diamonds analysis
+As we can see most diamonds are less than 2 carats and the mode is between 0 and 1 carat. The three charts on the left summarize the main features that can influence prices. The table on the right side of the panel shows the biggest diamonds and their prices.
+
+
+# Mapa
 ```{r}
 library(leaflet)
 leaflet() %>% 
@@ -55,4 +61,3 @@ leaflet() %>%
   addTiles() %>% 
   addMarkers(174.764, -36.877, popup = "Maungawhau")
 ```
-
