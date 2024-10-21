@@ -1,4 +1,4 @@
-caminho <- "D:\\R\\R_Estatistica_Basica"
+caminho <- "~/GitHub/rDS/intro/rcc"
 setwd(caminho)
 
 library(readxl)
@@ -11,10 +11,13 @@ library(readxl)
 #Para uso basta salvar esta aba/planilha como um novo arquivo ou adaptar o código abaixo
 arquivo <- "Tabela_21.xlsx"
 tab2_1 <- read_excel(arquivo)
+tab2_1$N <- NULL
 colnames(tab2_1) <- c("estado_civil", "grau_instrucao", "n_filhos",
                      "salarios", "idade_anos", "idade_meses", "regiao_procedencia")
 
 names(tab2_1)
+head(tab2_1)
+
 
 ##================================
 #Simple analysis and aggregations
