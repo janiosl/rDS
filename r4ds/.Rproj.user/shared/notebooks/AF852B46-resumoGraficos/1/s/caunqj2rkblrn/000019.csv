@@ -1,0 +1,6 @@
+"0","boxplot(stocks$Close,"
+"0","        stocks$Open,"
+"0","        stocks$High,"
+"0","        stocks$Low,"
+"0","        names = c(""Close"", ""Open"", ""High"", ""Low""),"
+"0","        main = ""Boxplot preços"")"
