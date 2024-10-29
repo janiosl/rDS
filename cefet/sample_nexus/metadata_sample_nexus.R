@@ -122,9 +122,7 @@ plot(as.ts(oil_3w_sample[[5]]$series))
 
 # #RARE -------------------------------------------------------------------
 #Do not use it until with fix use problems
-#Dataset might be better used as multivariate time series
-#Instead of selecting features it is better do use all features and sample
-#rows
+
 load("rare_sample.RData")
 
 meta_rare <- data.frame(
@@ -136,6 +134,19 @@ meta_rare$events <- sum(rare_sample$event)
 
 meta_rare
 summary(meta_rare)
+
+head(rare_sample)
+plot(as.ts(rare_sample[8]))
+
+
+#Dataset might be better used as multivariate time series
+#Instead of selecting features it is better do use all features and sample
+#rows
+#Visual examples of problems with the dataset
+plot(as.ts(rare_sample[,1:9]))
+plot(as.ts(rare_sample[,10:19]))
+plot(as.ts(rare_sample[20]))
+
 
 
 # #YAHOO ------------------------------------------------------------------
