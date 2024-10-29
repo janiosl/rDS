@@ -1,4 +1,8 @@
+setwd("~/GitHub/rDS/cefet/sample_nexus")
+
 # #Gecco ------------------------------------------------------------------
+load("gecco_sample.RData")
+
 meta_gecco <- data.frame(
   series = names(gecco_sample)[1:9]
 )
@@ -10,35 +14,9 @@ meta_gecco
 summary(meta_gecco)
 
 
-# #YAHOO ------------------------------------------------------------------
-meta_yahoo <- data.frame(
-  series = names(yahoo_sample)
-)
-
-nr <- c()
-j = 1
-for (j in 1:length(yahoo_sample)){
-  #print(nrow(yahoo_sample[[j]]))
-  nr <- append(nr, nrow(yahoo_sample[[j]]))
-}
-
-meta_yahoo$rows <- nr
-
-
-ev <- c()
-j = 1
-for(j in 1:length(yahoo_sample)){
-  #print(sum(yahoo_sample[[j]]$event))
-  ev <- append(ev, sum(yahoo_sample[[j]]$event))
-}
-
-meta_yahoo$events <- ev
-
-meta_yahoo
-summary(meta_yahoo)
-
-
 # #NAB --------------------------------------------------------------------
+load("nab_sample.RData")
+
 meta_nab <- data.frame(
   series = names(nab_sample)
 )
@@ -64,20 +42,12 @@ meta_nab$events <- ev
 meta_nab
 summary(meta_nab)
 
-
-# #RARE -------------------------------------------------------------------
-meta_rare <- data.frame(
-  series = names(rare_sample)[1:20]
-)
-
-meta_rare$rows <- nrow(rare_sample)
-meta_rare$events <- sum(rare_sample$event)
-
-meta_rare
-summary(meta_rare)
-
+head(nab_sample[[9]])
+plot(as.ts(nab_sample[[9]]$value))
 
 # #UCR --------------------------------------------------------------------
+load("ucr_sample.RData")
+
 meta_ucr <- data.frame(
   series = names(ucr_sample)
 )
@@ -104,8 +74,14 @@ meta_ucr$events <- ev
 meta_ucr
 summary(meta_ucr)
 
+#Series example
+head(ucr_sample[[7]])
+plot(as.ts(ucr_sample[[7]]$series))
+
 
 # #3W ---------------------------------------------------------------------
+load("oil_3w_sample.RData")
+
 meta_3w <- data.frame(
   series = names(oil_3w_sample)
 )
@@ -139,3 +115,51 @@ summary(meta_3w[meta_3w$events > 0,])
 #Exceto séries inválidas (sem observações)
 meta_3w[meta_3w$rows > 0,]
 summary(meta_3w[meta_3w$rows > 0,])
+
+
+head(oil_3w_sample[[5]])
+plot(as.ts(oil_3w_sample[[5]]$series))
+
+# #RARE -------------------------------------------------------------------
+#Dataset might be better used as multivariate time series
+#Instead of selecting features it is better do use all features and sample
+#rows
+load("rare_sample.RData")
+
+meta_rare <- data.frame(
+  series = names(rare_sample)[1:20]
+)
+
+meta_rare$rows <- nrow(rare_sample)
+meta_rare$events <- sum(rare_sample$event)
+
+meta_rare
+summary(meta_rare)
+
+
+# #YAHOO ------------------------------------------------------------------
+meta_yahoo <- data.frame(
+  series = names(yahoo_sample)
+)
+
+nr <- c()
+j = 1
+for (j in 1:length(yahoo_sample)){
+  #print(nrow(yahoo_sample[[j]]))
+  nr <- append(nr, nrow(yahoo_sample[[j]]))
+}
+
+meta_yahoo$rows <- nr
+
+
+ev <- c()
+j = 1
+for(j in 1:length(yahoo_sample)){
+  #print(sum(yahoo_sample[[j]]$event))
+  ev <- append(ev, sum(yahoo_sample[[j]]$event))
+}
+
+meta_yahoo$events <- ev
+
+meta_yahoo
+summary(meta_yahoo)
