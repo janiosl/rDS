@@ -121,7 +121,7 @@ head(oil_3w_sample[[5]])
 plot(as.ts(oil_3w_sample[[5]]$series))
 
 # #RARE -------------------------------------------------------------------
-#Do not use it until with fix use problems
+#Do not use until usage problems are corrected
 
 load("rare_sample.RData")
 
@@ -150,7 +150,7 @@ plot(as.ts(rare_sample[20]))
 
 
 # #YAHOO ------------------------------------------------------------------
-#Do not use it until with fix use problems
+#Do not use until usage problems are corrected
 #Series with errors on change point labels
 meta_yahoo <- data.frame(
   series = names(yahoo_sample)
