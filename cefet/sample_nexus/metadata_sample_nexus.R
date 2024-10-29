@@ -121,6 +121,7 @@ head(oil_3w_sample[[5]])
 plot(as.ts(oil_3w_sample[[5]]$series))
 
 # #RARE -------------------------------------------------------------------
+#Do not use it until with fix use problems
 #Dataset might be better used as multivariate time series
 #Instead of selecting features it is better do use all features and sample
 #rows
@@ -138,6 +139,8 @@ summary(meta_rare)
 
 
 # #YAHOO ------------------------------------------------------------------
+#Do not use it until with fix use problems
+#Series with errors on change point labels
 meta_yahoo <- data.frame(
   series = names(yahoo_sample)
 )
