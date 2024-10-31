@@ -13,6 +13,9 @@ meta_gecco$events <- sum(gecco_sample$event)
 meta_gecco
 summary(meta_gecco)
 
+head(gecco)
+plot(as.ts(gecco[,1:9]))
+
 
 # #NAB --------------------------------------------------------------------
 load("nab_sample.RData")
