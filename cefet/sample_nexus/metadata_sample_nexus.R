@@ -15,7 +15,7 @@ summary(meta_gecco)
 
 head(gecco_sample)
 plot(as.ts(gecco_sample[,1:9]))
-
+plot(as.ts(gecco_sample$event))
 
 # #NAB --------------------------------------------------------------------
 load("nab_sample.RData")
@@ -47,6 +47,8 @@ summary(meta_nab)
 
 head(nab_sample[[9]])
 plot(as.ts(nab_sample[[9]]$value))
+
+plot(as.ts(nab_sample[[9]]$event))
 
 # #UCR --------------------------------------------------------------------
 load("ucr_sample.RData")
