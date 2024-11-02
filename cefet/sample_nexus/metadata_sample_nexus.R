@@ -82,6 +82,7 @@ summary(meta_ucr)
 #Series example
 head(ucr_sample[[7]])
 plot(as.ts(ucr_sample[[7]]$series))
+plot(as.ts(ucr_sample[[7]]$event))
 
 
 # #3W ---------------------------------------------------------------------
