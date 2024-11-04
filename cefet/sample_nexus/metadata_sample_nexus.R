@@ -124,7 +124,11 @@ summary(meta_3w[meta_3w$rows > 0,])
 
 
 head(oil_3w_sample[[5]])
-plot(as.ts(oil_3w_sample[[5]]$series))
+plot(as.ts(oil_3w_sample[[9]]$series))
+plot(as.ts(oil_3w_sample[[9]]$event))
+
+plot(as.ts(oil_3w_sample[[13]]$series))
+plot(as.ts(oil_3w_sample[[13]]$event))
 
 # #RARE -------------------------------------------------------------------
 #Do not use until usage problems are corrected
