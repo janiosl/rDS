@@ -102,6 +102,12 @@ for (j in 1:length(oil_3w_sample)){
 meta_3w$rows <- nr
 
 
+
+#Rótulos usados com abordagem de problema de detecção como classificação binária
+#0 = normal, 1 = evento.
+#https://www.sciencedirect.com/science/article/pii/S0920410519306357?via%3Dihub
+#Seção 4 - Proposed benchmarks e 4.2 - Anomaly detection
+
 ev <- c()
 j = 1
 for(j in 1:length(oil_3w_sample)){
