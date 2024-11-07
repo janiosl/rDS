@@ -13,9 +13,9 @@ meta_gecco$events <- sum(gecco_sample$event)
 meta_gecco
 summary(meta_gecco)
 
-head(gecco)
-plot(as.ts(gecco[,1:9]))
-
+head(gecco_sample)
+plot(as.ts(gecco_sample[,1:9]))
+plot(as.ts(gecco_sample$event))
 
 # #NAB --------------------------------------------------------------------
 load("nab_sample.RData")
@@ -47,6 +47,8 @@ summary(meta_nab)
 
 head(nab_sample[[9]])
 plot(as.ts(nab_sample[[9]]$value))
+
+plot(as.ts(nab_sample[[9]]$event))
 
 # #UCR --------------------------------------------------------------------
 load("ucr_sample.RData")
@@ -80,6 +82,7 @@ summary(meta_ucr)
 #Series example
 head(ucr_sample[[7]])
 plot(as.ts(ucr_sample[[7]]$series))
+plot(as.ts(ucr_sample[[7]]$event))
 
 
 # #3W ---------------------------------------------------------------------
@@ -98,6 +101,12 @@ for (j in 1:length(oil_3w_sample)){
 
 meta_3w$rows <- nr
 
+
+
+#Rótulos usados com abordagem de problema de detecção como classificação binária
+#0 = normal, 1 = evento.
+#https://www.sciencedirect.com/science/article/pii/S0920410519306357?via%3Dihub
+#Seção 4 - Proposed benchmarks e 4.2 - Anomaly detection
 
 ev <- c()
 j = 1
@@ -121,7 +130,11 @@ summary(meta_3w[meta_3w$rows > 0,])
 
 
 head(oil_3w_sample[[5]])
-plot(as.ts(oil_3w_sample[[5]]$series))
+plot(as.ts(oil_3w_sample[[9]]$series))
+plot(as.ts(oil_3w_sample[[9]]$event))
+
+plot(as.ts(oil_3w_sample[[13]]$series))
+plot(as.ts(oil_3w_sample[[13]]$event))
 
 # #RARE -------------------------------------------------------------------
 #Do not use until usage problems are corrected
