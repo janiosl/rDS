@@ -1,5 +1,6 @@
 install.packages("devtools")
 library(devtools)
+
 devtools::install_github("cefet-rj-dal/event_datasets", force=TRUE)
 
 #Load a series using package - Recommended
