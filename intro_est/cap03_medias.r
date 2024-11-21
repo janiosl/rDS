@@ -84,8 +84,6 @@ legend("bottomright", lty=1,
 
 
 
-
-
 #Análise de grandezas inversas
 setor <- c("A", "B")
 produtividade <- c(15,20)
@@ -124,3 +122,7 @@ recall <- c(0.6, 0.3)
 #Cálculo do F1 score
 harmonica(c(precisao[1], recall[1]))
 harmonica(c(precisao[2], recall[2]))
+
+
+
+#Grandes volumes
